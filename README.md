@@ -1,5 +1,5 @@
 # Human Speech Processing
-Decoding auditory representation of brain using natural speech stimuli
+Decoding auditory representation of the brain using natural speech stimuli
 
 ## Data
 1. [Bang! You're Dead](https://caltech.app.box.com/s/m4rztkl85uavl2xuv5eir8y0ysjn657c)
