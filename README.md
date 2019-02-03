@@ -1,4 +1,4 @@
-# human_speech_processing
+# Human Speech Processing
 Decoding auditory representation of brain using natural speech stimuli
 
 ## Data
