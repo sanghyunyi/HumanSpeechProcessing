@@ -10,6 +10,7 @@ Decoding auditory representation of the brain using natural speech stimuli
 - about 700 subjects scanned in Cambridge
 
 2. [Forest Gump](http://studyforrest.org)
+- [Script](https://github.com/psychoinformatics-de/studyforrest-data-annotations)
 - fMRI
 - sEEG (patient number 6 and 8)
 
