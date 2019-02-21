@@ -3,7 +3,6 @@ import feature
 import nibabel as nib
 import os
 import numpy as np
-from nipype.interfaces.semtools.registration import brainsresample
 
 # Align brain imaging data and stimuli
 

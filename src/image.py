@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 from nipype.interfaces import fsl
-
+from nipype.interfaces.semtools.registration import brainsresample
 
 # Handle brain imaging data.
 # Preporcess is also done here.
@@ -15,19 +15,37 @@ class fMRIimage:
         self.img_data = self.img.get_data()
 
     def mask_non_brain_region(self):
-        btr = fsl.BET()
-        btr.inputs.in_file = self.img_path
-        filename, file_extension = os.path.splitext(self.img_path)
-        out_path =  filename + '_mask_non_brain_region' + file_extension
-        btr.inputs.out_file = out_path
-        btr.inputs.frac = 0.7
-        btr.functional = True
-        btr.output_type = 'NIFTI_GZ'
-        btr.cmdline
-        res = btr.run()
+        filename, file_extension1 = os.path.splitext(self.img_path)
+        filename, file_extension2 = os.path.splitext(filename)
+        out_path = filename + '_mask_non_brain_region' + file_extension2 + file_extension1
+        if not os.path.isfile(out_path):
+            btr = fsl.BET()
+            btr.inputs.in_file = self.img_path
+            btr.inputs.out_file = out_path
+            btr.inputs.frac = 0.25
+            btr.inputs.functional = True
+            btr.inputs.output_type = 'NIFTI_GZ'
+            btr.cmdline
+            btr.run()
         self.img = nib.load(out_path)
         self.img_path = out_path
         self.img_data = self.img.get_data()
+
+    def resample(self, interpolation_mode):
+        filename, file_extension1 = os.path.splitext(self.img_path)
+        filename, file_extension2 = os.path.splitext(filename)
+        out_path = filename + '_resample_' + interpolation_mode + file_extension2 + file_extension1
+        resampler = brainsresample.BRAINSResample()
+        resampler.inputs.inputVolume = self.img_path
+        resampler.inputs.outputVolume = out_path
+        resampler.inputs.interpolationMode = interpolation_mode
+        resampler.inputs.environ = {'PATH': '/Applications/Slicer.app/Contents/lib/Slicer-4.10/cli-modules'}
+        resampler.cmdline
+        resampler.run()
+        self.img = nib.load(out_path)
+        self.img_path = out_path
+        self.img_data = self.img.get_data()
+
 
     def get_neighbor_voxels_of_a_point(self, x, y, z, neighbor_size):
         max_x = x + neighbor_size + 1
@@ -46,7 +64,7 @@ class fMRIimage:
         for x in range(0 + neighbor_size, shape[0] - neighbor_size):
             for y in range(0 + neighbor_size, shape[1] - neighbor_size):
                 for z in range(0 + neighbor_size, shape[2] - neighbor_size):
-                    out.append = get_neighbor_voxels_of_a_point(self x, y, z, neighbor_size)
+                    out.append = get_neighbor_voxels_of_a_point(self, x, y, z, neighbor_size)
         return np.array(out)
 
     def show_slices(self, x, y, z, v):
@@ -58,7 +76,11 @@ class fMRIimage:
 
 if __name__ == "__main__":
     data_path = '/Users/YiSangHyun/ds000113-download/sub-03/ses-forrestgump/func'
-    img = nib.load(os.path.join(data_path, 'sub-03_ses-forrestgump_task-forrestgump_acq-dico_run-01_bold.nii.gz'))
+    img = fMRIimage(os.path.join(data_path, 'sub-03_ses-forrestgump_task-forrestgump_acq-dico_run-01_bold.nii.gz'))
+    #img.show_slices(40,40,20,3)
+    img.mask_non_brain_region()
+    img.resample("Lanczos")
+    img.show_slices(40,40,20,3)
+
     #img_data = img.get_data()
 
-    print(img.header)

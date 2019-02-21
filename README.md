@@ -29,3 +29,11 @@ Decoding auditory representation of the brain using natural speech stimuli
 2. [The Penn Phonetics Lab Forced Aligner](https://babel.ling.upenn.edu/phonetics/old_website_2015/p2fa/index.html)
 3. [DA tagger](https://github.com/ColingPaper2018/DialogueAct-Tagger)
 4. [STT](https://github.com/GoogleCloudPlatform/python-docs-samples/tree/master/speech/cloud-client)
+
+## Dependencies
+- Python3.7
+- nibabel, nilearn, ninype
+- textblob, spacy
+- [FSL](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL)
+- [Slicer](https://download.slicer.org)
+- [DA tagger](https://github.com/ColingPaper2018/DialogueAct-Tagger)
