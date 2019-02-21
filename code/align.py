@@ -3,10 +3,11 @@ import feature
 import nibabel as nib
 import os
 import numpy as np
+from nipype.interfaces.semtools.registration import brainsresample
 
 # Align brain imaging data and stimuli
 
-def average_align(df, img_data, tr): # tr = 2
+def average_align(df, img_data, tr): # tr = 2 #naive nearest neighbor interpolation
     out = []
     for i in range(len(df)):
         row = df.iloc[i]
@@ -30,9 +31,8 @@ def average_align(df, img_data, tr): # tr = 2
 
     return np.array(out)
 
-
 if __name__ == "__main__":
-    sbt = stimuli.srt2df('/Users/YiSangHyun/Dropbox/Study/Graduate/2018-Winter/Ralphlab/FG/FG_delayed10s_seg0.srt')
+    sbt = feature.srt2df('/Users/YiSangHyun/Dropbox/Study/Graduate/2018-Winter/Ralphlab/FG/FG_delayed10s_seg0.srt')
     print(sbt)
 
     data_path = '/Users/YiSangHyun/ds000113-download/sub-03/ses-forrestgump/func'
@@ -41,4 +41,6 @@ if __name__ == "__main__":
 
     print(img.header)
 
-    print(average_align(sbt, img.get_data(), 2))
+    #print(average_align(sbt, img.get_data(), 2))
+    resampler = brainsresample.BRAINSResample()
+    print(resampler)
