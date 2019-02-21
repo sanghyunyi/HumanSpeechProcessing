@@ -1,5 +1,5 @@
 import image
-import stimuli
+import feature
 import nibabel as nib
 import os
 import numpy as np
