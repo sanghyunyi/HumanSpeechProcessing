@@ -3,10 +3,10 @@ import feature
 import nibabel as nib
 import os
 import numpy as np
-
 # Align brain imaging data and stimuli
 
-def average_align(df, img_data, tr): # tr = 2 #naive nearest neighbor interpolation
+def nn_align(df, brain_img, tr): # tr = 2 #naive nearest neighbor interpolation
+    out_i = []
     out = []
     for i in range(len(df)):
         row = df.iloc[i]
@@ -26,20 +26,21 @@ def average_align(df, img_data, tr): # tr = 2 #naive nearest neighbor interpolat
         else:
             end = int(end)
 
-        out.append(np.average(img_data[:,:,:,start:end+1], axis=0))
+        matched_image = brain_img.img_data[:,:,:,start:end+1]
+        if matched_image.size:
+            out_i.append(i)
+            out.append(np.average(matched_image, axis=-1))
 
-    return np.array(out)
+    return df.iloc[out_i], np.array(out)
 
 if __name__ == "__main__":
     sbt = feature.srt2df('/Users/YiSangHyun/Dropbox/Study/Graduate/2018-Winter/Ralphlab/FG/FG_delayed10s_seg0.srt')
     print(sbt)
 
     data_path = '/Users/YiSangHyun/ds000113-download/sub-03/ses-forrestgump/func'
-    img = nib.load(os.path.join(data_path, 'sub-03_ses-forrestgump_task-forrestgump_acq-dico_run-01_bold.nii.gz'))
+    img = image.fMRIimage(os.path.join(data_path, 'sub-03_ses-forrestgump_task-forrestgump_acq-dico_run-01_bold.nii.gz'))
     #img_data = img.get_data()
 
-    print(img.header)
+    print(img)
 
-    #print(average_align(sbt, img.get_data(), 2))
-    resampler = brainsresample.BRAINSResample()
-    print(resampler)
+    print(nn_align(sbt, img, 2))

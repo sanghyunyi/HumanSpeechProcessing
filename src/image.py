@@ -14,6 +14,9 @@ class fMRIimage:
         self.img_path = img_path
         self.img_data = self.img.get_data()
 
+    def __str__(self):
+        return str(self.img.header) + '\npath = ' + self.img_path
+
     def mask_non_brain_region(self):
         filename, file_extension1 = os.path.splitext(self.img_path)
         filename, file_extension2 = os.path.splitext(filename)
@@ -32,6 +35,9 @@ class fMRIimage:
         self.img_data = self.img.get_data()
 
     def resample(self, interpolation_mode):
+        # It seems like it only works for 3D data.
+        # What we need is volume wise resampling
+        # Use fmriprep!
         filename, file_extension1 = os.path.splitext(self.img_path)
         filename, file_extension2 = os.path.splitext(filename)
         out_path = filename + '_resample_' + interpolation_mode + file_extension2 + file_extension1
@@ -40,6 +46,7 @@ class fMRIimage:
         resampler.inputs.outputVolume = out_path
         resampler.inputs.interpolationMode = interpolation_mode
         resampler.inputs.environ = {'PATH': '/Applications/Slicer.app/Contents/lib/Slicer-4.10/cli-modules'}
+        resampler.inputs.gridSpacing = 0
         resampler.cmdline
         resampler.run()
         self.img = nib.load(out_path)
