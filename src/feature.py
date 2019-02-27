@@ -3,6 +3,7 @@ import pandas as pd
 from datetime import datetime
 import numpy as np
 from scipy import interpolate
+import math
 
 # DA tagger
 import os, sys
@@ -106,7 +107,7 @@ def add_sentiment_features(df):
 
 def add_sentvec_features(df, model):
     # It's just averaging the word vectors
-    # Check available model at https://github.com/RaRe-Technologies/gensim-data
+    # Check available models at https://github.com/RaRe-Technologies/gensim-data
     # Eg.
     # fasttext-wiki-news-subwords-300
     # glove-wiki-gigaword-300
@@ -122,8 +123,8 @@ def add_sentvec_features(df, model):
     df['sent_vecs'] = sent_vecs
     return df
 
-def add_word_vec_features(df, model):
-    # Check available model at https://github.com/RaRe-Technologies/gensim-data
+def add_wordvec_features(df, model):
+    # Check available models at https://github.com/RaRe-Technologies/gensim-data
     # Eg.
     # fasttext-wiki-news-subwords-300
     # glove-wiki-gigaword-300
@@ -152,49 +153,81 @@ def vectorize(df, feature):
     df[feature] = vectorized
     return df
 
-def resample(df, rate):
+def resample(df, rate, last_end_time):
     # rate is Hz
     tr = 1./rate
     count = 0
     time_stamps = []
     lines = []
-    last_end_time = df.iloc[-1]['End']
     time_stamp = count * tr
     while time_stamp <= last_end_time:
         line = df[(df['Start'] <= time_stamp) & (df['End'] > time_stamp)]
         if len(line) == 0:
-            count += 1
-            time_stamp = count * tr
-        else:
-            time_stamps.append(time_stamp)
-            lines.append(line)
-            count += 1
-            time_stamp = count * tr
+            line = pd.Series([np.nan])
+        time_stamps.append(time_stamp)
+        lines.append(line)
+        count += 1
+        time_stamp = count * tr
     df = pd.concat(lines)
     df['time_stamp'] = time_stamps
     return df
 
+def replace_na(df, features):
+    for feature in features:
+        default_value = df[feature].mean()
+        default_value -= default_value
+        new_values = []
+        for value in df[feature]:
+            if np.isnan(value).any():
+                new_values.append(default_value)
+            else:
+                new_values.append(value)
+        df[feature] = new_values
+    return df
+
 def interpolation(df, kind, feature):
+    #values should be float dor int
     values = df[feature].values #values should be float or int
     values = np.concatenate(values, axis=0)
     time_stamp = df['time_stamp']
-    f_list = []
-    for i in values.shape[-1]:
+    f_dic = {}
+    for i in range(values.shape[-1]):
         dim = values[:, i]
         f = interpolate.interp1d(time_stamp, dim, kind=kind)
-        f_list.append(f)
-    return f_list
+        f_dic[feature + str(i)] = f
+    return f_dic
 
-def resample_from_interp(df, rate, functions, feature):
-    return None
+def resample_from_interpolation(functions_dic, tr, last_end_time):
+    count = 0
+    time_stamps = []
+    time_stamp = count * tr
+    out = {}
+    for key in functions_dic.keys():
+        out[key] = []
+    while time_stamp <= last_end_time:
+        for key in functions_dic.keys():
+            out[key].append(functions_dic[key](time_stamp))
+        time_stamps.append(time_stamp)
+        count += 1
+        time_stamp = count * tr
+
+    out['time_stamp'] = time_stamps
+    df = pd.DataFrame(out)
+    return df # return type should be np array
 
 if __name__ == "__main__":
     #sbt = srt2df('/Users/YiSangHyun/Dropbox/Study/Graduate/2018-Winter/Ralphlab/FG/FG_delayed10s_seg0.srt')
     #print(sbt)
-    sbt = googleSTT2df('/Users/YiSangHyun/Dropbox/Study/Graduate/2018-Winter/Ralphlab/FG/seg0.txt')
+    sbt = googleSTT2df('/Users/YiSangHyun/Dropbox/Study/Graduate/2018-Winter/Ralphlab/FG/seg0_vid.txt')
     sbt = sbt.iloc[:2]
     sbt = add_DA_tags(sbt)
     sbt = vectorize(sbt, 'dimension')
-    sbt = resample(sbt, 4)
-    interpolation(sbt, None, 'dimension')
+    print(sbt)
+    sbt = resample(sbt, 4, 192) #886
+    print(sbt)
+    sbt = replace_na(sbt, ['dimension'])
+    print(sbt)
+    f_dic = interpolation(sbt, 'nearest', 'dimension')
+    sbt = resample_from_interpolation(f_dic, 2, 192)
+    print(sbt)
 
