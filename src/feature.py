@@ -74,6 +74,14 @@ def googleSTT2df(path):
     df = pd.DataFrame(data=d)
     return df
 
+def concat_sessions(df_list, offset_list):
+    # The format of offset_list is in config_.py
+    assert len(df_list) == len(offset_list)
+    for i, df in enumerate(df_list):
+        offset = offset_list[i][0]
+        df['Start'] += offset
+        df['End'] += offset
+    return pd.concat(df_list)
 
 def add_DA_tags(df):
     cfg = Config.from_json(os.path.join(DA_path, 'models/Model.SVM/meta.json'))
