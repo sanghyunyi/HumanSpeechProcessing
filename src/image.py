@@ -82,8 +82,8 @@ class fMRIimage:
         plt.show()
 
 if __name__ == "__main__":
-    data_path = '/Users/YiSangHyun/ds000113-download/sub-03/ses-forrestgump/func'
-    img = fMRIimage(os.path.join(data_path, 'sub-03_ses-forrestgump_task-forrestgump_acq-dico_run-01_bold.nii.gz'))
+    data_path = '/Users/YiSangHyun/ds000113-download/sub-03/ses-movie/func'
+    img = fMRIimage(os.path.join(data_path, 'sub-03_ses-movie_task-movie_run-1_bold.nii.gz'))
     #img.show_slices(40,40,20,3)
     img.mask_non_brain_region()
     img.resample("Lanczos")

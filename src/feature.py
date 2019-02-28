@@ -285,7 +285,7 @@ def replace_na(df, features):
 def interpolation(df, kind, feature):
     #values should be float dor int
     values = df[feature].values #values should be float or int
-    if len(values.shape) > 1: # Only when the features are multi dimensional
+    if len(values[0].shape) > 1: # Only when the features are multi dimensional
         values = np.concatenate(values, axis=0)
     time_stamp = df['time_stamp']
     f_dic = {}
@@ -313,6 +313,25 @@ def resample_from_interpolation(functions_dic, tr, last_end_time):
     df = pd.DataFrame(out)
     return df # return type should be np array
 
+def delay_and_concat(df):
+    # Assume df has TR(2s) of fMRI
+    # Refer to Huth et al., Nature, 2016.
+    df_list = [df.copy()]
+    df = df.drop('time_stamp', axis='columns')
+    for i in range(4):
+        df.loc[-1] = [0.] * len(df.loc[0])
+        df.index += 1
+        df.sort_index(inplace=True)
+        df_list.append(df.copy()[:-1])
+
+    df = df_list[0]
+    df = df.rename(lambda x: '0s_delayed_'+str(x), axis='columns')
+    for i, dfs in enumerate(df_list[1:]):
+        dfs = dfs.rename(lambda x: str(i + 1) + 's_delayed_' + str(x), axis='columns')
+        df = df.join(dfs)
+
+    return df
+
 if __name__ == "__main__":
     #sbt = srt2df('/Users/YiSangHyun/Dropbox/Study/Graduate/2018-Winter/Ralphlab/FG/FG_delayed10s_seg0.srt')
     #print(sbt)
@@ -331,9 +350,11 @@ if __name__ == "__main__":
     print(sbt)
     sbt = resample(sbt, 4, 194) #886
     print(sbt)
-    sbt = replace_na(sbt, ['dimension'])
+    sbt = replace_na(sbt, ['phoneme'])
     print(sbt)
-    f_dic = interpolation(sbt, 'nearest', 'dimension')
+    f_dic = interpolation(sbt, 'nearest', 'phoneme')
     sbt = resample_from_interpolation(f_dic, 2, 194)
+    print(sbt)
+    sbt = delay_and_concat(sbt)
     print(sbt)
 
