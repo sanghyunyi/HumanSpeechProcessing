@@ -113,6 +113,20 @@ def add_sentiment_features(df):
     df['senti_p_pos'] = senti_p_pos
     return df
 
+def add_POS_features(df):
+    past_sentence = ""
+    POS_tags = []
+    POSs = None
+    for sentence in df['Transcript']:
+        if sentence != past_sentence:
+            blob = TextBlob(sentence)
+            POSs = blob.tags
+            past_sentence = sentence
+        POS_tags.append(POSs.pop(0)[-1])
+
+    df['POS'] = POS_tags
+    return df
+
 def add_sentvec_features(df, model):
     # It's just averaging the word vectors
     # Check available models at https://github.com/RaRe-Technologies/gensim-data
