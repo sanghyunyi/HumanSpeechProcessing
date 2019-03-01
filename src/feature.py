@@ -94,18 +94,22 @@ def add_DA_features(df):
     cfg = Config.from_json(os.path.join(DA_path, 'models/Model.SVM/meta.json'))
     cfg.out_folder = os.path.join(DA_path, 'models/Model.SVM')
     tagger = SVMPredictor(cfg)
-    DA_dimension = []
-    DA_communicative_function = []
+    DA_dimension_list = []
+    DA_communicative_function_list = []
+    past_sentence = ""
     for sentence in df['Transcript']:
-        DA_tag = tagger.dialogue_act_tag(sentence)
-        if len(DA_tag) == 0:
-            DA_dimension.append("Other")
-            DA_communicative_function.append("Other")
-        else:
-            DA_dimension.append(DA_tag[0]['dimension'])
-            DA_communicative_function.append(DA_tag[0]['communicative_function'])
-    df['DA_dimension'] = DA_dimension
-    df['DA_communicative_function'] = DA_communicative_function
+        if sentence != past_sentence:
+            DA_tag = tagger.dialogue_act_tag(sentence)
+            if len(DA_tag) == 0:
+                DA_dimension = "Other"
+                DA_communicative_function = "Other"
+            else:
+                DA_dimension = DA_tag[0]['dimension']
+                DA_communicative_function = DA_tag[0]['communicative_function']
+        DA_dimension_list.append(DA_dimension)
+        DA_communicative_function_list.append(DA_communicative_function)
+    df['DA_dimension'] = DA_dimension_list
+    df['DA_communicative_function'] = DA_communicative_function_list
     return df
 
 def add_sentiment_features(df):
@@ -379,24 +383,31 @@ if __name__ == "__main__":
         sbt.append(googleSTT2df('/Users/YiSangHyun/Dropbox/Study/Graduate/2018-Winter/Ralphlab/FG/seg{}_vid.txt'.format(i)))
     sbt = concat_sessions(sbt, data.SEGMENTS_OFFSETS)
     print(sbt)
-    sbt = sbt.iloc[:6] #for testing
+    #sbt = sbt.iloc[:6] #for testing
     sbt = add_DA_features(sbt)
+    print("DA done")
     sbt = add_sentiment_features(sbt)
+    print("Senti done")
     sbt = add_POS_features(sbt)
+    print("POS done")
     sbt = add_word_rate_features(sbt)
+    print("Word rate done")
     sbt = add_phoneme_features(sbt)
+    print("Phoneme done")
     sbt = add_sentvec_features(sbt, 'glove-wiki-gigaword-50')
+    print("sentvec done")
     sbt = add_wordvec_features(sbt, 'glove-wiki-gigaword-50')
+    print("wordvec done")
     print(sbt)
     sbt = vectorize(sbt, ['DA_dimension', 'DA_communicative_function', 'senti_class', 'POS', 'phoneme'])
     print(sbt)
-    sbt = resample(sbt, 4, 194)
+    sbt = resample(sbt, 4, data.SEGMENTS_OFFSETS[-1][0])# 194)
     print(sbt)
     sbt = replace_na(sbt, ['DA_dimension', 'DA_communicative_function', 'senti_class', 'senti_p_pos', 'POS', 'phoneme', 'word_vecs', 'sent_vecs', 'word_rate'])
     print(sbt)
     f_dic = interpolation(sbt, 'nearest', ['DA_dimension', 'DA_communicative_function', 'senti_class', 'senti_p_pos', 'POS', 'phoneme', 'word_vecs', 'sent_vecs', 'word_rate'])
-    sbt = resample_from_interpolation(f_dic, 2, 194)
+    sbt = resample_from_interpolation(f_dic, 2, data.SEGMENTS_OFFSETS[-1][0])# 194)
     print(sbt)
     sbt = delay_and_concat(sbt)
     print(sbt)
-
+    sbt.to_pickle('../data/feature.pkl')
