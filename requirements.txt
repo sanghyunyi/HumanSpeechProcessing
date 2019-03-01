@@ -6,3 +6,4 @@ gensim==3.7.1
 textblob==0.15.2
 nibabel==2.3.3
 nipype==1.1.8
+g2p_en==1.0.1
