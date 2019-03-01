@@ -21,6 +21,7 @@ import spacy
 import gensim.downloader as api
 from textblob import TextBlob
 from textblob.sentiments import NaiveBayesAnalyzer
+from textblob.sentiments import PatternAnalyzer
 import g2p_en as g2p
 
 # Extract features from stimuli.
@@ -115,20 +116,26 @@ def add_DA_features(df):
 
 def add_sentiment_features(df):
     # Need vectorize
-    senti_class_list = []
-    senti_p_pos_list = []
+    p_positive_list = []
+    polarity_list = []
+    subjectivity_list = []
     past_sentence = ""
     for sentence in df['Transcript']:
         if sentence != past_sentence:
             blob = TextBlob(sentence, analyzer=NaiveBayesAnalyzer())
-            senti_class = blob.sentiment.classification
-            senti_p_pos = blob.sentiment.p_pos
-            past_sentence = sentence
-        senti_class_list.append(senti_class)
-        senti_p_pos_list.append(senti_p_pos)
+            p_positive = blob.sentiment.p_pos
+            blob = TextBlob(sentence, analyzer=PatternAnalyzer())
+            polarity = blob.sentiment.polarity
+            subjectivity = blob.sentiment.subjectivity
 
-    df['senti_class'] = senti_class_list
-    df['senti_p_pos'] = senti_p_pos_list
+            past_sentence = sentence
+        p_positive_list.append(p_positive)
+        polarity_list.append(polarity)
+        subjectivity_list.append(subjectivity)
+
+    df['senti_p_positive'] = p_positive_list
+    df['senti_polarity'] = polarity_list
+    df['senti_subjectivity'] = subjectivity_list
     return df
 
 def add_POS_features(df):
@@ -198,6 +205,7 @@ def add_sentvec_features(df, model):
     wordvec_model = api.load(model)
     nlp = spacy.load('en')
     past_sentence = ""
+    vec_dim = int(model.split('-')[-1])
     for sentence in df['Transcript']:
         if sentence != past_sentence:
             tokens = nlp(sentence)
@@ -212,7 +220,7 @@ def add_sentvec_features(df, model):
                 word_vecs = np.array(word_vecs)
                 sent_vec = np.average(word_vecs, axis=0)
             else:
-                sent_vec = np.nan
+                sent_vec = np.zeros(vec_dim)
             past_sentence = sentence
         sent_vecs.append(sent_vec)
     df['sent_vecs'] = sent_vecs
@@ -227,6 +235,7 @@ def add_wordvec_features(df, model):
     word_vecs = []
     wordvec_model = api.load(model)
     nlp = spacy.load('en')
+    vec_dim = int(model.split('-')[-1])
     for word in df['Word']:
         tokens = nlp(word)
         sub_word_list = [token.text.lower() for token in tokens]
@@ -240,19 +249,21 @@ def add_wordvec_features(df, model):
             sub_word_vecs = np.array(sub_word_vecs)
             word_vec = np.average(sub_word_vecs, axis=0)
         else:
-            word_vec = np.nan
+            word_vec = np.zeros(vec_dim)
         word_vecs.append(word_vec)
     df['word_vecs'] = word_vecs
     return df
 
 def vectorize(df, features):
+    onehot2feature = {}
     for feature in features:
-        assert feature not in ['word_vecs', 'sent_vecs', 'word_rate', 'senti_p_pos']
+        assert feature in ['POS', 'phoneme', 'DA_dimension', 'DA_communicative_function']
         if feature in ['POS', 'phoneme']:
             values = set(sum(df[feature], []))
             dic = {}
             for i, value in enumerate(values):
                 dic[value] = i
+            onehot2feature[feature] = {v: k for k, v in dic.items()}
             vectorized = []
             for value_list in df[feature]:
                 vec = np.zeros(len(dic))
@@ -261,11 +272,12 @@ def vectorize(df, features):
                     vec[i] += 1.
                 vectorized.append(vec)
             df[feature] = vectorized
-        else:
+        else: #DA
             values = df[feature].unique()
             dic = {}
             for i, value in enumerate(values):
                 dic[value] = i
+            onehot2feature[feature] = {v: k for k, v in dic.items()}
             vectorized = []
             for value in df[feature]:
                 vec = np.zeros(len(dic))
@@ -273,7 +285,7 @@ def vectorize(df, features):
                 vec[i] += 1.
                 vectorized.append(vec)
             df[feature] = vectorized
-    return df
+    return df, onehot2feature
 
 def resample(df, rate, last_end_time):
     # rate is Hz
@@ -307,7 +319,7 @@ def replace_na(df, features):
         df[feature] = new_values
     return df
 
-def interpolation(df, kind, features):
+def interpolation(df, kind, features, onehot2feature):
     f_dic = {}
     for feature in features:
         #values should be float dor int
@@ -319,7 +331,11 @@ def interpolation(df, kind, features):
         for i in range(values.shape[-1]):
             component = values[:, i]
             f = interpolate.interp1d(time_stamp, component, kind=kind)
-            f_dic[feature + str(i)] = f
+            if feature in ['POS', 'phoneme', 'DA_dimension', 'DA_communicative_function']:
+                feature_name = onehot2feature[feature][i]
+                f_dic[feature + '_' + feature_name] = f
+            else:
+                f_dic[feature + str(i)] = f
     return f_dic
 
 def resample_from_interpolation(functions_dic, tr, last_end_time):
@@ -405,15 +421,16 @@ if __name__ == "__main__":
     sbt = add_wordvec_features(sbt, 'glove-wiki-gigaword-50')
     print("wordvec done")
     print(sbt)
-    sbt = vectorize(sbt, ['DA_dimension', 'DA_communicative_function', 'senti_class', 'POS', 'phoneme'])
+    sbt.to_pickle('../data/feature_text.pkl')
+    sbt, onehot2feature = vectorize(sbt, ['DA_dimension', 'DA_communicative_function', 'POS', 'phoneme'])
     print(sbt)
     sbt = resample(sbt, 4, data.SEGMENTS_OFFSETS[-1][0])# 194)
     print(sbt)
-    sbt = replace_na(sbt, ['DA_dimension', 'DA_communicative_function', 'senti_class', 'senti_p_pos', 'POS', 'phoneme', 'word_vecs', 'sent_vecs', 'word_rate'])
+    sbt = replace_na(sbt, ['DA_dimension', 'DA_communicative_function', 'senti_p_positive','senti_polarity', 'senti_subjectivity', 'POS', 'phoneme', 'word_vecs', 'sent_vecs', 'word_rate'])
     print(sbt)
-    f_dic = interpolation(sbt, 'nearest', ['DA_dimension', 'DA_communicative_function', 'senti_class', 'senti_p_pos', 'POS', 'phoneme', 'word_vecs', 'sent_vecs', 'word_rate'])
+    f_dic = interpolation(sbt, 'nearest',  ['DA_dimension', 'DA_communicative_function', 'senti_p_positive','senti_polarity', 'senti_subjectivity', 'POS', 'phoneme', 'word_vecs', 'sent_vecs', 'word_rate'], onehot2feature)
     sbt = resample_from_interpolation(f_dic, 2, data.SEGMENTS_OFFSETS[-1][0])# 194)
     print(sbt)
     sbt = delay_and_concat(sbt)
     print(sbt)
-    sbt.to_pickle('../data/feature.pkl')
+    sbt.to_pickle('../data/feature_number.pkl')
