@@ -106,6 +106,7 @@ def add_DA_features(df):
             else:
                 DA_dimension = DA_tag[0]['dimension']
                 DA_communicative_function = DA_tag[0]['communicative_function']
+            past_sentence = sentence
         DA_dimension_list.append(DA_dimension)
         DA_communicative_function_list.append(DA_communicative_function)
     df['DA_dimension'] = DA_dimension_list
@@ -114,15 +115,20 @@ def add_DA_features(df):
 
 def add_sentiment_features(df):
     # Need vectorize
-    senti_class = []
-    senti_p_pos = []
+    senti_class_list = []
+    senti_p_pos_list = []
+    past_sentence = ""
     for sentence in df['Transcript']:
-        blob = TextBlob(sentence, analyzer=NaiveBayesAnalyzer())
-        senti_class.append(blob.sentiment.classification)
-        senti_p_pos.append(blob.sentiment.p_pos)
+        if sentence != past_sentence:
+            blob = TextBlob(sentence, analyzer=NaiveBayesAnalyzer())
+            senti_class = blob.sentiment.classification
+            senti_p_pos = blob.sentiment.p_pos
+            past_sentence = sentence
+        senti_class_list.append(senti_class)
+        senti_p_pos_list.append(senti_p_pos)
 
-    df['senti_class'] = senti_class
-    df['senti_p_pos'] = senti_p_pos
+    df['senti_class'] = senti_class_list
+    df['senti_p_pos'] = senti_p_pos_list
     return df
 
 def add_POS_features(df):
