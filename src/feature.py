@@ -4,6 +4,8 @@ from datetime import datetime
 import numpy as np
 from scipy import interpolate
 import math
+import glob
+import data
 
 # DA tagger
 import os, sys
@@ -20,7 +22,8 @@ import gensim.downloader as api
 from textblob import TextBlob
 from textblob.sentiments import NaiveBayesAnalyzer
 import g2p_en as g2p
-# Handle stimuli.
+
+# Extract features from stimuli.
 
 def srt2df(path):
     srt_in = open(path, 'r', encoding='utf-8-sig').read().split('\n\n')
@@ -76,12 +79,15 @@ def googleSTT2df(path):
 
 def concat_sessions(df_list, offset_list):
     # The format of offset_list is in config_.py
-    assert len(df_list) == len(offset_list)
+    assert len(df_list) == len(offset_list) - 1
+    out_df_list = []
     for i, df in enumerate(df_list):
         offset = offset_list[i][0]
         df['Start'] += offset
         df['End'] += offset
-    return pd.concat(df_list)
+        out_df = df[df['End'] <= offset_list[i + 1][0]]
+        out_df_list.append(out_df)
+    return pd.concat(out_df_list)
 
 def add_DA_features(df):
     # Need vectorize
@@ -98,8 +104,8 @@ def add_DA_features(df):
         else:
             DA_dimension.append(DA_tag[0]['dimension'])
             DA_communicative_function.append(DA_tag[0]['communicative_function'])
-    df['dimension'] = DA_dimension
-    df['communicative_function'] = DA_communicative_function
+    df['DA_dimension'] = DA_dimension
+    df['DA_communicative_function'] = DA_communicative_function
     return df
 
 def add_sentiment_features(df):
@@ -181,20 +187,23 @@ def add_sentvec_features(df, model):
     sent_vecs = []
     wordvec_model = api.load(model)
     nlp = spacy.load('en')
+    past_sentence = ""
     for sentence in df['Transcript']:
-        tokens = nlp(sentence)
-        word_list = [token.text.lower() for token in tokens]
-        word_vecs = []
-        for word in word_list:
-            try:
-                word_vecs.append(wordvec_model[word])
-            except:
-                continue
-        if len(word_vecs) > 0:
-            word_vecs = np.array(word_vecs)
-            sent_vec = np.average(word_vecs, axis=0)
-        else:
-            sent_vec = np.nan
+        if sentence != past_sentence:
+            tokens = nlp(sentence)
+            word_list = [token.text.lower() for token in tokens]
+            word_vecs = []
+            for word in word_list:
+                try:
+                    word_vecs.append(wordvec_model[word])
+                except:
+                    continue
+            if len(word_vecs) > 0:
+                word_vecs = np.array(word_vecs)
+                sent_vec = np.average(word_vecs, axis=0)
+            else:
+                sent_vec = np.nan
+            past_sentence = sentence
         sent_vecs.append(sent_vec)
     df['sent_vecs'] = sent_vecs
     return df
@@ -219,35 +228,36 @@ def add_wordvec_features(df, model):
     df['word_vecs'] = word_vecs
     return df
 
-def vectorize(df, feature):
-    assert feature not in ['word_vecs', 'sent_vecs', 'word_rate']
-    if feature in ['POS', 'phoneme']:
-        values = set(sum(df[feature], []))
-        dic = {}
-        for i, value in enumerate(values):
-            dic[value] = i
-        vectorized = []
-        for value_list in df[feature]:
-            vec = np.zeros(len(dic))
-            for value in value_list:
+def vectorize(df, features):
+    for feature in features:
+        assert feature not in ['word_vecs', 'sent_vecs', 'word_rate']
+        if feature in ['POS', 'phoneme']:
+            values = set(sum(df[feature], []))
+            dic = {}
+            for i, value in enumerate(values):
+                dic[value] = i
+            vectorized = []
+            for value_list in df[feature]:
+                vec = np.zeros(len(dic))
+                for value in value_list:
+                    i = dic[value]
+                    vec[i] += 1.
+                vec = vec.reshape(1, vec.shape[0])
+                vectorized.append(vec)
+            df[feature] = vectorized
+        else:
+            values = df[feature].unique()
+            dic = {}
+            for i, value in enumerate(values):
+                dic[value] = i
+            vectorized = []
+            for value in df[feature]:
+                vec = np.zeros(len(dic))
                 i = dic[value]
                 vec[i] += 1.
-            vec = vec.reshape(1, vec.shape[0])
-            vectorized.append(vec)
-        df[feature] = vectorized
-    else:
-        values = df[feature].unique()
-        dic = {}
-        for i, value in enumerate(values):
-            dic[value] = i
-        vectorized = []
-        for value in df[feature]:
-            vec = np.zeros(len(dic))
-            i = dic[value]
-            vec[i] += 1.
-            vec = vec.reshape(1, vec.shape[0])
-            vectorized.append(vec)
-        df[feature] = vectorized
+                vec = vec.reshape(1, vec.shape[0])
+                vectorized.append(vec)
+            df[feature] = vectorized
     return df
 
 def resample(df, rate, last_end_time):
@@ -282,17 +292,18 @@ def replace_na(df, features):
         df[feature] = new_values
     return df
 
-def interpolation(df, kind, feature):
-    #values should be float dor int
-    values = df[feature].values #values should be float or int
-    if len(values[0].shape) > 1: # Only when the features are multi dimensional
-        values = np.concatenate(values, axis=0)
-    time_stamp = df['time_stamp']
+def interpolation(df, kind, features):
     f_dic = {}
-    for i in range(values.shape[-1]):
-        dim = values[:, i]
-        f = interpolate.interp1d(time_stamp, dim, kind=kind)
-        f_dic[feature + str(i)] = f
+    for feature in features:
+        #values should be float dor int
+        values = df[feature].values #values should be float or int
+        if len(values[0].shape) > 1: # Only when the features are multi dimensional
+            values = np.concatenate(values, axis=0)
+        time_stamp = df['time_stamp']
+        for i in range(values.shape[-1]):
+            dim = values[:, i]
+            f = interpolate.interp1d(time_stamp, dim, kind=kind)
+            f_dic[feature + str(i)] = f
     return f_dic
 
 def resample_from_interpolation(functions_dic, tr, last_end_time):
@@ -332,28 +343,34 @@ def delay_and_concat(df):
 
     return df
 
+#def full_preproc(path, wordvec_model, tr):
+
+
 if __name__ == "__main__":
     #sbt = srt2df('/Users/YiSangHyun/Dropbox/Study/Graduate/2018-Winter/Ralphlab/FG/FG_delayed10s_seg0.srt')
     #print(sbt)
-    sbt = googleSTT2df('/Users/YiSangHyun/Dropbox/Study/Graduate/2018-Winter/Ralphlab/FG/seg0_vid.txt')
+    sbt = []
+    for i in range(8):
+        sbt.append(googleSTT2df('/Users/YiSangHyun/Dropbox/Study/Graduate/2018-Winter/Ralphlab/FG/seg{}_vid.txt'.format(i)))
+    sbt = concat_sessions(sbt, data.SEGMENTS_OFFSETS)
+    print(sbt)
     sbt = sbt.iloc[:6]
-    #sbt = add_word_rate_features(sbt)
-    sbt = add_phoneme_features(sbt)
-    #sbt = add_DA_features(sbt)
-    #sbt = add_sentiment_features(sbt)
+    sbt = add_DA_features(sbt)
+    sbt = add_sentiment_features(sbt)
     sbt = add_POS_features(sbt)
-    #sbt = add_wordvec_features(sbt, 'glove-wiki-gigaword-50')
+    sbt = add_word_rate_features(sbt)
+    sbt = add_phoneme_features(sbt)
+    sbt = add_sentvec_features(sbt, 'glove-wiki-gigaword-50')
+    sbt = add_wordvec_features(sbt, 'glove-wiki-gigaword-50')
     print(sbt)
-    #sbt = add_sentvec_features(sbt, 'glove-wiki-gigaword-50')
-    #print(sbt)
-    sbt = vectorize(sbt, 'phoneme')
+    sbt = vectorize(sbt, ['phoneme'])
     print(sbt)
-    sbt = resample(sbt, 4, 194) #886
+    sbt = resample(sbt, 4, data.SEGMENTS_OFFSETS[-1][0])
     print(sbt)
     sbt = replace_na(sbt, ['phoneme'])
     print(sbt)
-    f_dic = interpolation(sbt, 'nearest', 'phoneme')
-    sbt = resample_from_interpolation(f_dic, 2, 194)
+    f_dic = interpolation(sbt, 'nearest', ['phoneme'])
+    sbt = resample_from_interpolation(f_dic, 2, data.SEGMENTS_OFFSETS[-1][0])
     print(sbt)
     sbt = delay_and_concat(sbt)
     print(sbt)

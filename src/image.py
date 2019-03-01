@@ -6,7 +6,7 @@ from nipype.interfaces import fsl
 from nipype.interfaces.semtools.registration import brainsresample
 
 # Handle brain imaging data.
-# Preporcess is also done here.
+# Preporcessng is done by fMRIPrep.
 
 class fMRIimage:
     def __init__(self, img_path):
@@ -18,6 +18,7 @@ class fMRIimage:
         return str(self.img.header) + '\npath = ' + self.img_path
 
     def mask_non_brain_region(self):
+        # USE fmriprep!
         filename, file_extension1 = os.path.splitext(self.img_path)
         filename, file_extension2 = os.path.splitext(filename)
         out_path = filename + '_mask_non_brain_region' + file_extension2 + file_extension1
@@ -33,26 +34,6 @@ class fMRIimage:
         self.img = nib.load(out_path)
         self.img_path = out_path
         self.img_data = self.img.get_data()
-
-    def resample(self, interpolation_mode):
-        # It seems like it only works for 3D data.
-        # What we need is volume wise resampling
-        # Use fmriprep!
-        filename, file_extension1 = os.path.splitext(self.img_path)
-        filename, file_extension2 = os.path.splitext(filename)
-        out_path = filename + '_resample_' + interpolation_mode + file_extension2 + file_extension1
-        resampler = brainsresample.BRAINSResample()
-        resampler.inputs.inputVolume = self.img_path
-        resampler.inputs.outputVolume = out_path
-        resampler.inputs.interpolationMode = interpolation_mode
-        resampler.inputs.environ = {'PATH': '/Applications/Slicer.app/Contents/lib/Slicer-4.10/cli-modules'}
-        resampler.inputs.gridSpacing = 0
-        resampler.cmdline
-        resampler.run()
-        self.img = nib.load(out_path)
-        self.img_path = out_path
-        self.img_data = self.img.get_data()
-
 
     def get_neighbor_voxels_of_a_point(self, x, y, z, neighbor_size):
         max_x = x + neighbor_size + 1
@@ -81,13 +62,24 @@ class fMRIimage:
             axes[i].imshow(slice.T, cmap="gray", origin="lower")
         plt.show()
 
+def concat_sessions(img_list):
+    out_list = []
+    for img in img_list:
+        array = img.img_data
+        out_list.append(array[:, :, :, 3:-5]) #Refer to Hanke et al., 2014
+    img_data = np.concatenate(out_list, axis=-1)
+    return img_data
+
 if __name__ == "__main__":
     data_path = '/Users/YiSangHyun/ds000113-download/sub-03/ses-movie/func'
-    img = fMRIimage(os.path.join(data_path, 'sub-03_ses-movie_task-movie_run-1_bold.nii.gz'))
+    img_list = []
+    for i in range(1,9):
+        img = fMRIimage(os.path.join(data_path, 'sub-03_ses-movie_task-movie_run-{}_bold.nii.gz'.format(i)))
+        img_list.append(img)
     #img.show_slices(40,40,20,3)
-    img.mask_non_brain_region()
-    img.resample("Lanczos")
-    img.show_slices(40,40,20,3)
+    #img.mask_non_brain_region()
+
+    #img.show_slices(40,40,20,3)
 
     #img_data = img.get_data()
-
+    print(concat_sessions(img_list).shape)
