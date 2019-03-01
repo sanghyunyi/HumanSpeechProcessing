@@ -3,8 +3,8 @@ import pandas as pd
 from datetime import datetime
 import numpy as np
 from scipy import interpolate
-import math
-import glob
+import math, glob, re
+
 import data
 
 # DA tagger
@@ -141,29 +141,28 @@ def add_sentiment_features(df):
 def add_POS_features(df):
     # Need vectorize
     current_sentence = ""
-    current_sentence_list = []
     POS_tags = []
     for i, new_sentence in enumerate(df['Transcript']):
         if new_sentence != current_sentence:
             blob = TextBlob(new_sentence)
             POSs = blob.tags
             current_sentence = new_sentence
-            current_sentence_list = current_sentence.split()
+            POS_len = len(POSs)
             count = 0
 
-        current_word = df['Word'][i]
+        current_word = df['Word'].iloc[i]
 
-        if current_word == POSs[count][0]:
+        if current_word == POSs[count][0] or bool(re.search(r'\d', current_word)):
             POS_tags.append([POSs[count][-1]])
-            count += 1
+            count = (count + 1) % POS_len
         else:
             subword = POSs[count][0]
             POS_tags_of_a_word = [POSs[count][-1]]
             while current_word != subword:
-                count += 1
+                count = (count + 1) % POS_len
                 subword += POSs[count][0]
                 POS_tags_of_a_word.append(POSs[count][-1])
-            count += 1
+            count = (count + 1) % POS_len
             POS_tags.append(POS_tags_of_a_word)
 
     df['POS'] = POS_tags
@@ -172,24 +171,63 @@ def add_POS_features(df):
 def add_word_rate_features(df):
     word_rates = []
     for i, word in enumerate(df['Word']):
-        word_rate = 1./(df['End'][i] - df['Start'][i])
+        word_rate = 1./(df['End'].iloc[i] - df['Start'].iloc[i])
         word_rates.append(word_rate)
     df['word_rate'] = word_rates
     return df
 
 def add_phoneme_features(df):
     # Need vectorize
+    def get_idx_of_numbers_in_sentence(sentence):
+        word_list = sentence.split()
+        idx_list = []
+        for i, word in enumerate(word_list):
+            if bool(re.search(r'\d', word)):
+                idx_list.append(i)
+        return idx_list
+
+    def split_sentence_by_number(sentence):
+        idx_of_numbers = get_idx_of_numbers_in_sentence(sentence)
+        word_list = sentence.split()
+        sentence_list = []
+        sub_sentence = ""
+        for i in range(len(word_list)):
+            if i in idx_of_numbers:
+                if len(sub_sentence) > 0:
+                    sentence_list.append(sub_sentence.strip())
+                    sub_sentence = ""
+                sentence_list.append(word_list[i])
+            else:
+                sub_sentence += ' ' + word_list[i]
+        sentence_list.append(sub_sentence.strip())
+        return sentence_list
+
     past_sentence = ""
     phoneme_list = []
     with g2p.Session():
-        for sentence in df['Transcript']:
+        for i, sentence in enumerate(df['Transcript']):
             if sentence != past_sentence:
-                phonemes_of_sentence = g2p.g2p(sentence)
-                phonemes_of_sentence = ','.join(phonemes_of_sentence)
-                phonemes_of_sentence = phonemes_of_sentence.split(', ,')
-                phonemes_of_sentence = [phonemes_chunk.split(',') for phonemes_chunk in phonemes_of_sentence]
+                splitted_sentence = split_sentence_by_number(sentence)
+                phonemes_of_sentence = []
+                for sub_sentence in splitted_sentence:
+                    if bool(re.search(r'\d', sub_sentence)):
+                        phonemes_of_sub_sentence = g2p.g2p(sub_sentence)
+                        phonemes_of_sentence.append(phonemes_of_sub_sentence)
+                    else:
+                        phonemes_of_sub_sentence = g2p.g2p(sub_sentence)
+                        phonemes_of_sub_sentence = ','.join(phonemes_of_sub_sentence)
+                        phonemes_of_sub_sentence = phonemes_of_sub_sentence.split(', ,')
+                        phonemes_of_sub_sentence = [phonemes_chunk.split(',') for phonemes_chunk in phonemes_of_sub_sentence]
+                        phonemes_of_sub_sentence = [phonemes for phonemes in phonemes_of_sub_sentence if phonemes != ['.']]
+                        phonemes_of_sentence += phonemes_of_sub_sentence
+
                 past_sentence = sentence
-            phoneme_list.append(phonemes_of_sentence.pop(0))
+                phonemes_len = len(phonemes_of_sentence)
+                count = 0
+
+            assert len(sentence.split()) == phonemes_len
+            phoneme_list.append(phonemes_of_sentence[count])
+            count = (count + 1) % phonemes_len
     df['phoneme'] = phoneme_list
     return df
 
