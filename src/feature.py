@@ -376,7 +376,7 @@ def resample_from_interpolation(functions_dic, tr, last_end_time):
             out[key].append(functions_dic[key](time_stamp))
         time_stamps.append(time_stamp)
         count += 1
-        time_stamp = count * tr
+        time_stamp = count * tr + 1
 
     out['time_stamp'] = time_stamps
     df = pd.DataFrame(out)
