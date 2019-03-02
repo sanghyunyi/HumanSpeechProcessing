@@ -78,18 +78,6 @@ def googleSTT2df(path):
     df = pd.DataFrame(data=d)
     return df
 
-def concat_sessions(df_list, offset_list):
-    # The format of offset_list is in config_.py
-    assert len(df_list) == len(offset_list) - 1
-    out_df_list = []
-    for i, df in enumerate(df_list):
-        offset = offset_list[i][0]
-        df['Start'] += offset
-        df['End'] += offset
-        out_df = df[df['End'] <= offset_list[i + 1][0]]
-        out_df_list.append(out_df)
-    return pd.concat(out_df_list)
-
 def add_DA_features(df):
     # Need vectorize
     cfg = Config.from_json(os.path.join(DA_path, 'models/Model.SVM/meta.json'))
@@ -379,7 +367,7 @@ def interpolation(df, kind, features, onehot2feature):
 def resample_from_interpolation(functions_dic, tr, last_end_time):
     count = 0
     time_stamps = []
-    time_stamp = count * tr
+    time_stamp = count * tr + 1
     out = {}
     for key in functions_dic.keys():
         out[key] = []
@@ -393,6 +381,17 @@ def resample_from_interpolation(functions_dic, tr, last_end_time):
     out['time_stamp'] = time_stamps
     df = pd.DataFrame(out)
     return df # return type should be np array
+
+def concat_sessions(df_list, offset_list):
+    # The format of offset_list is in config_.py
+    assert len(df_list) == len(offset_list)
+    out_df_list = []
+    for i, df in enumerate(df_list):
+        out_df = df[(df['time_stamp'] >= 6) & (df['time_stamp'] <= offset_list[i] - 10)]
+        out_df_list.append(out_df)
+    out = pd.concat(out_df_list, axis=0, ignore_index=True, sort=False)
+    out = out.fillna(0)
+    return out
 
 def delay_and_concat(df):
     # Assume df has TR(2s) of fMRI
@@ -414,61 +413,78 @@ def delay_and_concat(df):
     return df
 
 def full_preproc(path, wordvec_model, interpolation_kind, tr):
-    stimuli = []
-    for text in glob.glob(os.path.join(path, '*.txt')):
-        stimuli.append(googleSTT2df(text))
-    stimuli = concat_sessions(stimuli, data.SEGMENTS_OFFSETS)
+    stimuli_list = []
+    text_files = list(glob.glob(os.path.join(path, '*_vid.txt')))
+    text_files.sort()
+    for text in text_files:
+        print(text)
+        stimuli_list.append(googleSTT2df(text))
 
-    stimuli = add_sentiment_features(stimuli)
-    stimuli = add_POS_features(stimuli)
-    stimuli = add_word_rate_features(stimuli)
-    stimuli = add_phoneme_features(stimuli)
-    stimuli = add_sentvec_features(stimuli, wordvec_model)
-    stimuli = add_wordvec_features(stimuli, wordvec_model)
+    proc_stimuli_list = []
+    for i, stimuli in enumerate(stimuli_list):
+        print('{}th session'.format(i))
+        stimuli = add_DA_features(stimuli)
+        print('DA done')
+        stimuli = add_sentiment_features(stimuli)
+        print('Senti done')
+        stimuli = add_POS_features(stimuli)
+        print('POS done')
+        stimuli = add_word_rate_features(stimuli)
+        print('Word rate done')
+        stimuli = add_phoneme_features(stimuli)
+        print('Phoneme done')
+        stimuli = add_sentvec_features(stimuli, wordvec_model)
+        print('Sent vec done')
+        stimuli = add_wordvec_features(stimuli, wordvec_model)
+        print('Word vec done')
+        stimuli.to_pickle('../data/correct_feature_text_{}.pkl'.format(i))
+        print('Pickled')
+        stimuli, onehot2feature = vectorize(stimuli, ['DA_dimension', 'DA_communicative_function', 'POS', 'phoneme'])
+        stimuli = resample(stimuli, 4, data.SEGMENTS_OFFSETS[i])
+        stimuli = replace_na(stimuli, ['DA_dimension', 'DA_communicative_function', 'senti_p_positive','senti_polarity', 'senti_subjectivity', 'POS', 'phoneme', 'word_vecs', 'sent_vecs', 'word_rate'])
+        ftn_dic = interpolation(stimuli, interpolation_kind, ['DA_dimension', 'DA_communicative_function', 'senti_p_positive','senti_polarity', 'senti_subjectivity', 'POS', 'phoneme', 'word_vecs', 'sent_vecs', 'word_rate'], onehot2feature)
+        stimuli = resample_from_interpolation(ftn_dic, tr, data.SEGMENTS_OFFSETS[i])
 
-    stimuli = vectorize(stimuli, ['DA_dimension', 'DA_communicative_function', 'senti_class', 'senti_p_pos', 'POS', 'phoneme'])
-    stimuli = resample(stimuli, 4, data.SEGMENTS_OFFSETS[-1][0])
-    stimuli = replace_na(stimuli, ['DA_dimension', 'DA_communicative_function', 'senti_class', 'senti_p_pos', 'POS', 'phoneme', 'word_vecs', 'sent_vecs', 'word_rate'])
-    ftn_dic = interpolate(stimuli, interpolation_kind, ['DA_dimension', 'DA_communicative_function', 'senti_class', 'senti_p_pos', 'POS', 'phoneme', 'word_vecs', 'sent_vecs', 'word_rate'])
-    stimuli = resample_from_interpolation(f_dic, tr, data.SEGMENTS_OFFSETS[-1][0])
+        proc_stimuli_list.append(stimuli)
+    stimuli = concat_sessions(proc_stimuli_list, data.SEGMENTS_OFFSETS)
     stimuli = delay_and_concat(stimuli)
 
     return stimuli
 
 if __name__ == "__main__":
+    sbt = full_preproc('/Users/YiSangHyun/Dropbox/Study/Graduate/2018-Winter/Ralphlab/FG/', 'glove-wiki-gigaword-50', 'nearest', 2)
+    print(len(sbt))
+    sbt.to_pickle('../data/correct_feature.pkl')
     #sbt = srt2df('/Users/YiSangHyun/Dropbox/Study/Graduate/2018-Winter/Ralphlab/FG/FG_delayed10s_seg0.srt')
     #print(sbt)
-    sbt = []
-    for i in range(8):
-        sbt.append(googleSTT2df('/Users/YiSangHyun/Dropbox/Study/Graduate/2018-Winter/Ralphlab/FG/seg{}_vid.txt'.format(i)))
-    sbt = concat_sessions(sbt, data.SEGMENTS_OFFSETS)
-    print(sbt)
+    #sbt.append(googleSTT2df('/Users/YiSangHyun/Dropbox/Study/Graduate/2018-Winter/Ralphlab/FG/seg0_vid.txt'))
+    #print(sbt)
     #sbt = sbt.iloc[:6] #for testing
-    sbt = add_DA_features(sbt)
-    print("DA done")
-    sbt = add_sentiment_features(sbt)
-    print("Senti done")
-    sbt = add_POS_features(sbt)
-    print("POS done")
-    sbt = add_word_rate_features(sbt)
-    print("Word rate done")
-    sbt = add_phoneme_features(sbt)
-    print("Phoneme done")
-    sbt = add_sentvec_features(sbt, 'glove-wiki-gigaword-50')
-    print("sentvec done")
-    sbt = add_wordvec_features(sbt, 'glove-wiki-gigaword-50')
-    print("wordvec done")
-    print(sbt)
-    sbt.to_pickle('../data/feature_text.pkl')
-    sbt, onehot2feature = vectorize(sbt, ['DA_dimension', 'DA_communicative_function', 'POS', 'phoneme'])
-    print(sbt)
-    sbt = resample(sbt, 4, data.SEGMENTS_OFFSETS[-1][0])# 194)
-    print(sbt)
-    sbt = replace_na(sbt, ['DA_dimension', 'DA_communicative_function', 'senti_p_positive','senti_polarity', 'senti_subjectivity', 'POS', 'phoneme', 'word_vecs', 'sent_vecs', 'word_rate'])
-    print(sbt)
-    f_dic = interpolation(sbt, 'nearest',  ['DA_dimension', 'DA_communicative_function', 'senti_p_positive','senti_polarity', 'senti_subjectivity', 'POS', 'phoneme', 'word_vecs', 'sent_vecs', 'word_rate'], onehot2feature)
-    sbt = resample_from_interpolation(f_dic, 2, data.SEGMENTS_OFFSETS[-1][0])# 194)
-    print(sbt)
-    sbt = delay_and_concat(sbt)
-    print(sbt)
-    sbt.to_pickle('../data/feature_number.pkl')
+    #sbt = add_DA_features(sbt)
+    #print("DA done")
+    #sbt = add_sentiment_features(sbt)
+    #print("Senti done")
+    #sbt = add_POS_features(sbt)
+    #print("POS done")
+    #sbt = add_word_rate_features(sbt)
+    #print("Word rate done")
+    #sbt = add_phoneme_features(sbt)
+    #print("Phoneme done")
+    #sbt = add_sentvec_features(sbt, 'glove-wiki-gigaword-50')
+    #print("sentvec done")
+    #sbt = add_wordvec_features(sbt, 'glove-wiki-gigaword-50')
+    #print("wordvec done")
+    #print(sbt)
+    #sbt = pd.read_pickle('../data/feature_text.pkl')
+    #sbt, onehot2feature = vectorize(sbt, ['DA_dimension', 'DA_communicative_function', 'POS', 'phoneme'])
+    #print(sbt)
+    #sbt = resample(sbt, 4, 194)
+    #print(sbt)
+    #sbt = replace_na(sbt, ['DA_dimension', 'DA_communicative_function', 'senti_p_positive','senti_polarity', 'senti_subjectivity', 'POS', 'phoneme', 'word_vecs', 'sent_vecs', 'word_rate'])
+    #print(sbt)
+    #f_dic = interpolation(sbt, 'nearest',  ['DA_dimension', 'DA_communicative_function', 'senti_p_positive','senti_polarity', 'senti_subjectivity', 'POS', 'phoneme', 'word_vecs', 'sent_vecs', 'word_rate'], onehot2feature)
+    #sbt = resample_from_interpolation(f_dic, 2, 194)
+    #print(sbt)
+    #sbt = delay_and_concat(sbt)
+    #print(sbt)
+

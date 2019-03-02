@@ -2,6 +2,7 @@ import nibabel as nib
 import numpy as np
 import matplotlib.pyplot as plt
 import os
+import pickle as pkl
 from nipype.interfaces import fsl
 from nipype.interfaces.semtools.registration import brainsresample
 
@@ -75,11 +76,15 @@ if __name__ == "__main__":
     img_list = []
     for i in range(1,9):
         img = fMRIimage(os.path.join(data_path, 'sub-03_ses-movie_task-movie_run-{}_bold.nii.gz'.format(i)))
+        img.mask_non_brain_region()
+        print(str(i) + ' masking done')
         img_list.append(img)
     #img.show_slices(40,40,20,3)
-    #img.mask_non_brain_region()
 
     #img.show_slices(40,40,20,3)
 
     #img_data = img.get_data()
-    print(concat_sessions(img_list).shape)
+    all_imgs = concat_sessions(img_list)
+    with open('../data/brain.pkl', 'wb') as f:
+        pkl.dump(all_imgs, f)
+

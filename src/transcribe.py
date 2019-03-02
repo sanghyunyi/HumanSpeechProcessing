@@ -17,7 +17,7 @@
 """Google Cloud Speech API sample that demonstrates word time offsets.
 
 Example usage:
-    python transcribe_word_time_offsets.py resources/audio.raw
+    python transcribe_word_time_offsets.py resources/audio.wav
     python transcribe_word_time_offsets.py \
         gs://cloud-samples-tests/speech/vr.flac
 """
