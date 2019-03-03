@@ -440,13 +440,13 @@ def full_preproc(path, wordvec_model, interpolation_kind, tr):
         stimuli.to_pickle('../data/correct_feature_text_{}.pkl'.format(i))
         print('Pickled')
         stimuli, onehot2feature = vectorize(stimuli, ['DA_dimension', 'DA_communicative_function', 'POS', 'phoneme'])
-        stimuli = resample(stimuli, 4, data.SEGMENTS_OFFSETS[i])
+        stimuli = resample(stimuli, 4, data.SEGMENTS_LEN[i])
         stimuli = replace_na(stimuli, ['DA_dimension', 'DA_communicative_function', 'senti_p_positive','senti_polarity', 'senti_subjectivity', 'POS', 'phoneme', 'word_vecs', 'sent_vecs', 'word_rate'])
         ftn_dic = interpolation(stimuli, interpolation_kind, ['DA_dimension', 'DA_communicative_function', 'senti_p_positive','senti_polarity', 'senti_subjectivity', 'POS', 'phoneme', 'word_vecs', 'sent_vecs', 'word_rate'], onehot2feature)
-        stimuli = resample_from_interpolation(ftn_dic, tr, data.SEGMENTS_OFFSETS[i])
+        stimuli = resample_from_interpolation(ftn_dic, tr, data.SEGMENTS_LEN[i])
 
         proc_stimuli_list.append(stimuli)
-    stimuli = concat_sessions(proc_stimuli_list, data.SEGMENTS_OFFSETS)
+    stimuli = concat_sessions(proc_stimuli_list, data.SEGMENTS_LEN)
     stimuli = delay_and_concat(stimuli)
 
     return stimuli

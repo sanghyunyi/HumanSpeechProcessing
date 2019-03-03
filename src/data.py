@@ -1,4 +1,4 @@
-SEGMENTS_OFFSETS = [
+SEGMENTS_LEN = [
         902,
         882,
         876,
