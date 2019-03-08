@@ -1,4 +1,4 @@
-from sklearn.linear_model import Ridge, RidgeCV, Lasso, LassoCV # Encoding
+from sklearn.linear_model import Ridge, RidgeCV, Lasso, LassoCV, LogisticRegression # Encoding
 from sklearn.svm import LinearSVC # Decoding
 from sklearn.model_selection import KFold
 from sklearn.model_selection import cross_val_score
@@ -77,13 +77,20 @@ def decoding(reg, features, images):
 
 if __name__ == "__main__":
     brain_img = pkl.load(open('../data/brain.pkl', 'rb'))
-    feature = pd.read_pickle('../data/correct_feature.pkl').filter(regex='POS')
-    reg = Ridge()
-    corr = encoding(reg, feature, brain_img)
-    corr[corr < 0.2] = 0.
-    corr_img = nib.Nifti1Image(corr, affine=np.eye(4))
-    corr_img.to_filename('../data/corr.nii.gz')
-    single_brain_img = brain_img[:, :, :, 0]
-    single_brain_img = nib.Nifti1Image(single_brain_img, affine=np.eye(4))
-    single_brain_img.to_filename('../data/brain.nii.gz')
+    feature = pd.read_pickle('../data/correct_feature.pkl').filter(regex='DA_com')
+    feature = np.argmax(np.array(feature), axis=1)
+    print(len(feature))
+    en = False
+    if en:
+        reg = Ridge()
+        corr = encoding(reg, feature, brain_img)
+        corr[corr < 0.2] = 0.
+        corr_img = nib.Nifti1Image(corr, affine=np.eye(4))
+        corr_img.to_filename('../data/corr.nii.gz')
+        single_brain_img = brain_img[:, :, :, 0]
+        single_brain_img = nib.Nifti1Image(single_brain_img, affine=np.eye(4))
+        single_brain_img.to_filename('../data/brain.nii.gz')
+    else:
+        clf = LinearSVC()
+        print(decoding(clf, feature, brain_img))
 

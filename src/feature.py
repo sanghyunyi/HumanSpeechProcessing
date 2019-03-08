@@ -130,10 +130,11 @@ def add_POS_features(df):
     # Need vectorize
     current_sentence = ""
     POS_tags = []
+    nlp = spacy.load('en')
     for i, new_sentence in enumerate(df['Transcript']):
         if new_sentence != current_sentence:
-            blob = TextBlob(new_sentence)
-            POSs = blob.tags
+            tokens = nlp(new_sentence)
+            POSs = list(zip([token.text for token in tokens], [token.tag_ for token in tokens]))
             current_sentence = new_sentence
             POS_len = len(POSs)
             count = 0
@@ -154,6 +155,37 @@ def add_POS_features(df):
             POS_tags.append(POS_tags_of_a_word)
 
     df['POS'] = POS_tags
+    return df
+
+def add_syntactic_dependencies_features(df):
+    # Need vectorize
+    current_sentence = ""
+    DEP_tags = []
+    nlp = spacy.load('en')
+    for i, new_sentence in enumerate(df['Transcript']):
+        if new_sentence != current_sentence:
+            tokens = nlp(new_sentence)
+            DEPs = list(zip([token.text for token in tokens], [token.dep_ for token in tokens]))
+            current_sentence = new_sentence
+            DEP_len = len(DEPs)
+            count = 0
+
+        current_word = df['Word'].iloc[i]
+
+        if current_word == DEPs[count][0] or bool(re.search(r'\d', current_word)):
+            DEP_tags.append([DEPs[count][-1]])
+            count = (count + 1) % DEP_len
+        else:
+            subword = DEPs[count][0]
+            DEP_tags_of_a_word = [DEPs[count][-1]]
+            while current_word != subword:
+                count = (count + 1) % DEP_len
+                subword += DEPs[count][0]
+                DEP_tags_of_a_word.append(DEPs[count][-1])
+            count = (count + 1) % DEP_len
+            DEP_tags.append(DEP_tags_of_a_word)
+
+    df['syntactic_dependencies'] = DEP_tags
     return df
 
 def add_word_rate_features(df):
@@ -283,8 +315,8 @@ def add_wordvec_features(df, model):
 def vectorize(df, features):
     onehot2feature = {}
     for feature in features:
-        assert feature in ['POS', 'phoneme', 'DA_dimension', 'DA_communicative_function']
-        if feature in ['POS', 'phoneme']:
+        assert feature in ['POS', 'syntactic_dependencies', 'phoneme', 'DA_dimension', 'DA_communicative_function']
+        if feature in ['POS', 'syntactic_dependencies', 'phoneme']:
             values = set(sum(df[feature], []))
             dic = {}
             for i, value in enumerate(values):
@@ -357,7 +389,7 @@ def interpolation(df, kind, features, onehot2feature):
         for i in range(values.shape[-1]):
             component = values[:, i]
             f = interpolate.interp1d(time_stamp, component, kind=kind)
-            if feature in ['POS', 'phoneme', 'DA_dimension', 'DA_communicative_function']:
+            if feature in ['POS', 'syntactic_dependencies', 'phoneme', 'DA_dimension', 'DA_communicative_function']:
                 feature_name = onehot2feature[feature][i]
                 f_dic[feature + '_' + feature_name] = f
             else:
@@ -393,7 +425,7 @@ def concat_sessions(df_list, offset_list):
     out = out.fillna(0)
     return out
 
-def delay_and_concat(df):
+def delay_and_concat(df, tr):
     # Assume df has TR(2s) of fMRI
     # Refer to Huth et al., Nature, 2016.
     df_list = [df.copy()]
@@ -407,7 +439,7 @@ def delay_and_concat(df):
     df = df_list[0]
     df = df.rename(lambda x: '0s_delayed_'+str(x), axis='columns')
     for i, dfs in enumerate(df_list[1:]):
-        dfs = dfs.rename(lambda x: str(i + 1) + 's_delayed_' + str(x), axis='columns')
+        dfs = dfs.rename(lambda x: str(tr*(i + 1)) + 's_delayed_' + str(x), axis='columns')
         df = df.join(dfs)
 
     return df
@@ -429,6 +461,8 @@ def full_preproc(path, wordvec_model, interpolation_kind, tr):
         print('Senti done')
         stimuli = add_POS_features(stimuli)
         print('POS done')
+        stimuli = add_syntactic_dependencies_features(stimuli)
+        print('syntactic dependencies done')
         stimuli = add_word_rate_features(stimuli)
         print('Word rate done')
         stimuli = add_phoneme_features(stimuli)
@@ -439,25 +473,26 @@ def full_preproc(path, wordvec_model, interpolation_kind, tr):
         print('Word vec done')
         stimuli.to_pickle('../data/correct_feature_text_{}.pkl'.format(i))
         print('Pickled')
-        stimuli, onehot2feature = vectorize(stimuli, ['DA_dimension', 'DA_communicative_function', 'POS', 'phoneme'])
+        stimuli, onehot2feature = vectorize(stimuli, ['DA_dimension', 'DA_communicative_function', 'POS', 'syntactic_dependencies', 'phoneme'])
         stimuli = resample(stimuli, 4, data.SEGMENTS_LEN[i])
-        stimuli = replace_na(stimuli, ['DA_dimension', 'DA_communicative_function', 'senti_p_positive','senti_polarity', 'senti_subjectivity', 'POS', 'phoneme', 'word_vecs', 'sent_vecs', 'word_rate'])
-        ftn_dic = interpolation(stimuli, interpolation_kind, ['DA_dimension', 'DA_communicative_function', 'senti_p_positive','senti_polarity', 'senti_subjectivity', 'POS', 'phoneme', 'word_vecs', 'sent_vecs', 'word_rate'], onehot2feature)
+        stimuli = replace_na(stimuli, ['DA_dimension', 'DA_communicative_function', 'senti_p_positive','senti_polarity', 'senti_subjectivity', 'POS', 'syntactic_dependencies', 'phoneme', 'word_vecs', 'sent_vecs', 'word_rate'])
+        ftn_dic = interpolation(stimuli, interpolation_kind, ['DA_dimension', 'DA_communicative_function', 'senti_p_positive','senti_polarity', 'senti_subjectivity', 'POS', 'syntactic_dependencies', 'phoneme', 'word_vecs', 'sent_vecs', 'word_rate'], onehot2feature)
         stimuli = resample_from_interpolation(ftn_dic, tr, data.SEGMENTS_LEN[i])
 
         proc_stimuli_list.append(stimuli)
     stimuli = concat_sessions(proc_stimuli_list, data.SEGMENTS_LEN)
-    stimuli = delay_and_concat(stimuli)
+    stimuli = delay_and_concat(stimuli, tr)
 
     return stimuli
 
 if __name__ == "__main__":
-    sbt = full_preproc('/Users/YiSangHyun/Dropbox/Study/Graduate/2018-Winter/Ralphlab/FG/', 'glove-wiki-gigaword-50', 'nearest', 2)
-    print(len(sbt))
-    sbt.to_pickle('../data/correct_feature.pkl')
+    #sbt = full_preproc('/Users/YiSangHyun/Dropbox/Study/Graduate/2018-Winter/Ralphlab/FG/', 'glove-wiki-gigaword-50', 'nearest', 2)
+    #print(len(sbt))
+    #sbt.to_pickle('../data/correct_feature.pkl')
+    print(pd.read_pickle('../data/correct_feature.pkl'))
     #sbt = srt2df('/Users/YiSangHyun/Dropbox/Study/Graduate/2018-Winter/Ralphlab/FG/FG_delayed10s_seg0.srt')
     #print(sbt)
-    #sbt.append(googleSTT2df('/Users/YiSangHyun/Dropbox/Study/Graduate/2018-Winter/Ralphlab/FG/seg0_vid.txt'))
+    #sbt = googleSTT2df('/Users/YiSangHyun/Dropbox/Study/Graduate/2018-Winter/Ralphlab/FG/seg0_vid.txt')
     #print(sbt)
     #sbt = sbt.iloc[:6] #for testing
     #sbt = add_DA_features(sbt)
@@ -466,12 +501,19 @@ if __name__ == "__main__":
     #print("Senti done")
     #sbt = add_POS_features(sbt)
     #print("POS done")
+    #print(sbt)
+    #sbt = add_syntactic_dependencies_features(sbt)
+    #print("syntactic dependencies done")
+    #print(sbt)
     #sbt = add_word_rate_features(sbt)
     #print("Word rate done")
+    #print(sbt)
     #sbt = add_phoneme_features(sbt)
     #print("Phoneme done")
+    #print(sbt)
     #sbt = add_sentvec_features(sbt, 'glove-wiki-gigaword-50')
     #print("sentvec done")
+    #print(sbt)
     #sbt = add_wordvec_features(sbt, 'glove-wiki-gigaword-50')
     #print("wordvec done")
     #print(sbt)

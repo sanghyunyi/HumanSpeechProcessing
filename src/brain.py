@@ -71,6 +71,14 @@ def concat_sessions(img_list):
     img_data = np.concatenate(out_list, axis=-1)
     return img_data
 
+def full_preproc(data_path, n_of_sessions):
+    img_list = []
+    for i in range(1, n_of_sessions+1):
+        img = fMRIimage(os.path.join(data_path, 'sub-03_ses-movie_task-movie_run-{}_bold.nii.gz'.format(i)))
+        img_list.append(img)
+    all_imgs = concat_sessions(img_list)
+    return all_imgs
+
 if __name__ == "__main__":
     data_path = '/Users/YiSangHyun/ds000113-download/sub-03/ses-movie/func'
     img_list = []
