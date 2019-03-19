@@ -33,7 +33,7 @@ class fMRIimage:
     def mask_non_brain_region(self):
         # USE fmriprep!
         '''
-        Remove non barin region using FSL
+        Remove non barin regions using FSL
         '''
         filename, file_extension1 = os.path.splitext(self.img_path)
         filename, file_extension2 = os.path.splitext(filename)
@@ -93,9 +93,9 @@ class fMRIimage:
         '''
         Show the slices of the image.
         Input
-        - x: x coordinates
-        - y: y coordinates
-        - z: z coordinates
+        - x: x coordinate
+        - y: y coordinate
+        - z: z coordinate
         - v: the index of the volume
         '''
         fig, axes = plt.subplots(1, 3)
