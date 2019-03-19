@@ -40,10 +40,15 @@ Decoding auditory representation of the brain using natural speech stimuli
 
 ## Usage
 To train DA tagger
-    python DialogueAct-Tagger/scripts/train.py
+```bash
+python DialogueAct-Tagger/scripts/train.py
+```
 To transcribe the audio file
-    python src/transcribe.py <path_to_the_audio_file>
+```bash
+python src/transcribe.py <path_to_the_audio_file>
+```
 To extract features, load the brain data and fit the encoding models
-    python src/main.py 
-
+```bash
+python src/main.py 
+```
 
