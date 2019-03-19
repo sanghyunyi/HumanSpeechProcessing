@@ -27,6 +27,13 @@ import g2p_en as g2p
 # Extract features from stimuli.
 
 def srt2df(path):
+    '''
+    Read a srt(a subtitle file of a movie) file and convert it to a pandas dataframe.
+    Input
+    - path: the path to the srt file
+    Output
+    - df: the pandas dataframe of the srt file. It has 3 columns: Start, End and Transcript
+    '''
     srt_in = open(path, 'r', encoding='utf-8-sig').read().split('\n\n')
     starts = []
     ends = []
@@ -54,6 +61,13 @@ def srt2df(path):
     return df
 
 def googleSTT2df(path):
+    '''
+    Read a output text file from transcribe.py and convert it to a pandas dataframe.
+    Input
+    - path: the path to the text file from transcribe.py
+    Output
+    - df: the pandas dataframe of the text file. It has 4 colums: Start, End, Transcript and Word.
+    '''
     googleSTT = open(path, 'r').read().split('Transcript:')
     starts = []
     ends = []
@@ -79,7 +93,14 @@ def googleSTT2df(path):
     return df
 
 def add_DA_features(df):
-    # Need vectorize
+    '''
+    Add Dialog Acts as columns.
+    Use DialogueAct-Tagger(https://github.com/ColingPaper2018/DialogueAct-Tagger) to calculate DA tags.
+    Input
+    - df: the pandas dataframe that has Transciprt column
+    Output
+    - df: the pandas dataframe with the added columns: DA_dimension and DA_communicative_function
+    '''
     cfg = Config.from_json(os.path.join(DA_path, 'models/Model.SVM/meta.json'))
     cfg.out_folder = os.path.join(DA_path, 'models/Model.SVM')
     tagger = SVMPredictor(cfg)
@@ -103,7 +124,14 @@ def add_DA_features(df):
     return df
 
 def add_sentiment_features(df):
-    # Need vectorize
+    '''
+    Add sentiments as columns.
+    Use TextBlob to do the sentiment analysis.
+    Input
+    - df: the pandas dataframe that has Transciprt column
+    Output
+    - df: the pandas dataframe with the added columns: senti_p_postivie, senti_polarity, senti_subjectivity
+    '''
     p_positive_list = []
     polarity_list = []
     subjectivity_list = []
@@ -127,7 +155,14 @@ def add_sentiment_features(df):
     return df
 
 def add_POS_features(df):
-    # Need vectorize
+    '''
+    Add Part Of Speech tag as columns.
+    Use spcay to get the tags.
+    Input
+    - df: the pandas dataframe that has Transciprt and Word columns
+    Output
+    - df: the pandas dataframe with the added column: POS
+    '''
     current_sentence = ""
     POS_tags = []
     nlp = spacy.load('en')
@@ -158,7 +193,14 @@ def add_POS_features(df):
     return df
 
 def add_syntactic_dependencies_features(df):
-    # Need vectorize
+    '''
+    Add syntactic dependencies as a column.
+    Use spacy to get the tags.
+    Input
+    - df: the pandas dataframe that has Transciprt and Word columns
+    Output
+    - df: the pandas dataframe with the added column: syntactic_dependencies
+    '''
     current_sentence = ""
     DEP_tags = []
     nlp = spacy.load('en')
@@ -189,6 +231,13 @@ def add_syntactic_dependencies_features(df):
     return df
 
 def add_word_rate_features(df):
+    '''
+    Add word rate as a column.
+    Input
+    - df: the pandas dataframe that has Word, Start and End columns
+    Output
+    - df: the pandas dataframe with the added column: word_rate
+    '''
     word_rates = []
     for i, word in enumerate(df['Word']):
         word_rate = 1./(df['End'].iloc[i] - df['Start'].iloc[i])
@@ -197,7 +246,14 @@ def add_word_rate_features(df):
     return df
 
 def add_phoneme_features(df):
-    # Need vectorize
+    '''
+    Add phonmes as a column.
+    Use g2p_en (https://github.com/Kyubyong/g2p) to get the phonemes.
+    Input
+    - df: the pandas dataframe that has Transcript column
+    Output
+    - df: the pandas dataframe with the added column: phoneme
+    '''
     def get_idx_of_numbers_in_sentence(sentence):
         word_list = sentence.split()
         idx_list = []
@@ -253,12 +309,23 @@ def add_phoneme_features(df):
 
 
 def add_sentvec_features(df, model):
-    # It's just averaging the word vectors
-    # Check available models at https://github.com/RaRe-Technologies/gensim-data
-    # Eg.
-    # fasttext-wiki-news-subwords-300
-    # glove-wiki-gigaword-300
-    # word2vec-google-news-300
+    '''
+    Add sentence vectors as a column.
+    Use spacy and gensim to tokenize and vectorize the sentences.
+    Now, it just makes an average of the word vectors.
+    Check available models at https://github.com/RaRe-Technologies/gensim-data
+
+    Eg.
+    fasttext-wiki-news-subwords-300
+    glove-wiki-gigaword-300
+    word2vec-google-news-300
+
+    Input
+    - df: the pandas dataframe that has Transcript column
+    - model: word vector model
+    Output
+    - df: the pandas dataframe with the added column: sent_vecs
+    '''
     sent_vecs = []
     wordvec_model = api.load(model)
     nlp = spacy.load('en')
@@ -285,11 +352,22 @@ def add_sentvec_features(df, model):
     return df
 
 def add_wordvec_features(df, model):
-    # Check available models at https://github.com/RaRe-Technologies/gensim-data
-    # Eg.
-    # fasttext-wiki-news-subwords-300
-    # glove-wiki-gigaword-300
-    # word2vec-google-news-300
+    '''
+    Add word vectors as a column.
+    Use spacy and gensim to tokenize and vectorize the sentences.
+    Check available models at https://github.com/RaRe-Technologies/gensim-data
+
+    Eg.
+    fasttext-wiki-news-subwords-300
+    glove-wiki-gigaword-300
+    word2vec-google-news-300
+
+    Input
+    - df: the pandas dataframe that has Word column
+    - model: word vector model
+    Output
+    - df: the pandas dataframe with the added column: word_vecs
+    '''
     word_vecs = []
     wordvec_model = api.load(model)
     nlp = spacy.load('en')
@@ -313,6 +391,15 @@ def add_wordvec_features(df, model):
     return df
 
 def vectorize(df, features):
+    '''
+    Convert the categorical data to one hot vectors
+    Input
+    - df: the dataframe that contains columns which are categorical
+    - features: the list of the features that to be converted
+    Output
+    - df: the converted dataframe
+    - onehot2feature: the dictionary that convert one hot vectors to corresponding categories.
+    '''
     onehot2feature = {}
     for feature in features:
         assert feature in ['POS', 'syntactic_dependencies', 'phoneme', 'DA_dimension', 'DA_communicative_function']
@@ -346,6 +433,15 @@ def vectorize(df, features):
     return df, onehot2feature
 
 def resample(df, rate, last_end_time):
+    '''
+    Get more data points which will be used to calculate interopolation functions.
+    Input
+    - df: the dataframe which will be resampled
+    - rate: the frequency of the resampling
+    - last_end_time: the end time point of the considered dataframe
+    Output
+    - df: the resampled dataframe
+    '''
     # rate is Hz
     tr = 1./rate
     count = 0
@@ -365,6 +461,14 @@ def resample(df, rate, last_end_time):
     return df
 
 def replace_na(df, features):
+    '''
+    Remove NA in the dataframe
+    Input
+    - df: the dataframe which NAs will be removed
+    - features: the list of the features that contain NAs.
+    Output
+    - df: the dataframe without NA
+    '''
     for feature in features:
         default_value = df[feature].mean()
         default_value -= default_value
@@ -378,6 +482,16 @@ def replace_na(df, features):
     return df
 
 def interpolation(df, kind, features, onehot2feature):
+    '''
+    Calculate interpolation functions
+    Input
+    - df: the dataframe
+    - kind: the way of the interpolation
+    - features: the list of features on which we want to get the interpolation functions
+    - onehot2feature: the dictionary that converts one hot vectors to the corresponding feature names. This is from vectorize function.
+    Ouput
+    - f_dic: the dictionary of feature names to interpolation functions.
+    '''
     f_dic = {}
     for feature in features:
         #values should be float dor int
@@ -397,6 +511,16 @@ def interpolation(df, kind, features, onehot2feature):
     return f_dic
 
 def resample_from_interpolation(functions_dic, tr, last_end_time):
+    '''
+    Resample the features from the interpolation functions and return a dataframe.
+    The sampling rate should be aligned to the sampling rate of the brain data.
+    Input
+    - functions_dic: the dictionary of feature names to interpolation functions.
+    - tr: the temporal resolution. i.e. inverse of the sampling rate.
+    - last_end_time: the end time point of the considered data.
+    Output
+    - df: the dataframe containing resampled features
+    '''
     count = 0
     time_stamps = []
     time_stamp = count * tr + 1
@@ -412,22 +536,36 @@ def resample_from_interpolation(functions_dic, tr, last_end_time):
 
     out['time_stamp'] = time_stamps
     df = pd.DataFrame(out)
-    return df # return type should be np array
+    return df
 
-def concat_sessions(df_list, offset_list):
-    # The format of offset_list is in config_.py
-    assert len(df_list) == len(offset_list)
+def concat_sessions(df_list, len_list):
+    '''
+    Concatenate the list of dataframes from different seessions to one dataframe.
+    Input
+    - df_list: the list of dataframes from different sessions
+    - len_list: the length of each session in second. The format of it is in data.py
+    Output
+    - out: the concatenated dataframe
+    '''
+    assert len(df_list) == len(len_list)
     out_df_list = []
     for i, df in enumerate(df_list):
-        out_df = df[(df['time_stamp'] >= 6) & (df['time_stamp'] <= offset_list[i] - 10)]
+        out_df = df[(df['time_stamp'] >= 6) & (df['time_stamp'] <= len_list[i] - 10)]
         out_df_list.append(out_df)
     out = pd.concat(out_df_list, axis=0, ignore_index=True, sort=False)
     out = out.fillna(0)
     return out
 
 def delay_and_concat(df, tr):
-    # Assume df has TR(2s) of fMRI
-    # Refer to Huth et al., Nature, 2016.
+    '''
+    Make delayed feature dataframes and concatenate those dataframes.
+    Refer to Huth et al., Nature, 2016
+    Input
+    - df: the original dataframe
+    - tr: the temporal resolution of the brain data. In Huth et al., it is 2s.
+    Output
+    - df: the delayed and concatenated dataframe
+    '''
     df_list = [df.copy()]
     df = df.drop('time_stamp', axis='columns')
     for i in range(4):
@@ -445,8 +583,18 @@ def delay_and_concat(df, tr):
     return df
 
 def full_preproc(path, wordvec_model, interpolation_kind, tr):
+    '''
+    Do all the feature extraction in feature.py module.
+    Input
+    - path: Path to the directory where the transcription files are.
+    - wordvec_model: The model to make word and sentence vectors
+    - interpolation_kind: The way of doing the interpolation
+    - tr: the temoporal resolution of the brain data
+    Output
+    - stimuli: the dataframe that contains all the features
+    '''
     stimuli_list = []
-    text_files = list(glob.glob(os.path.join(path, '*_vid.txt')))
+    text_files = list(glob.glob(os.path.join(path, '*.txt')))
     text_files.sort()
     for text in text_files:
         print(text)
@@ -486,47 +634,48 @@ def full_preproc(path, wordvec_model, interpolation_kind, tr):
     return stimuli
 
 if __name__ == "__main__":
-    #sbt = full_preproc('/Users/YiSangHyun/Dropbox/Study/Graduate/2018-Winter/Ralphlab/FG/', 'glove-wiki-gigaword-50', 'nearest', 2)
-    #print(len(sbt))
-    #sbt.to_pickle('../data/correct_feature.pkl')
+    sbt = full_preproc('/Users/YiSangHyun/Dropbox/Study/Graduate/2018-Winter/Ralphlab/FG/', 'glove-wiki-gigaword-50', 'nearest', 2)
+    '''
+    print(len(sbt))
+    sbt.to_pickle('../data/correct_feature.pkl')
     print(pd.read_pickle('../data/correct_feature.pkl'))
-    #sbt = srt2df('/Users/YiSangHyun/Dropbox/Study/Graduate/2018-Winter/Ralphlab/FG/FG_delayed10s_seg0.srt')
-    #print(sbt)
-    #sbt = googleSTT2df('/Users/YiSangHyun/Dropbox/Study/Graduate/2018-Winter/Ralphlab/FG/seg0_vid.txt')
-    #print(sbt)
-    #sbt = sbt.iloc[:6] #for testing
-    #sbt = add_DA_features(sbt)
-    #print("DA done")
-    #sbt = add_sentiment_features(sbt)
-    #print("Senti done")
-    #sbt = add_POS_features(sbt)
-    #print("POS done")
-    #print(sbt)
-    #sbt = add_syntactic_dependencies_features(sbt)
-    #print("syntactic dependencies done")
-    #print(sbt)
-    #sbt = add_word_rate_features(sbt)
-    #print("Word rate done")
-    #print(sbt)
-    #sbt = add_phoneme_features(sbt)
-    #print("Phoneme done")
-    #print(sbt)
-    #sbt = add_sentvec_features(sbt, 'glove-wiki-gigaword-50')
-    #print("sentvec done")
-    #print(sbt)
-    #sbt = add_wordvec_features(sbt, 'glove-wiki-gigaword-50')
-    #print("wordvec done")
-    #print(sbt)
-    #sbt = pd.read_pickle('../data/feature_text.pkl')
-    #sbt, onehot2feature = vectorize(sbt, ['DA_dimension', 'DA_communicative_function', 'POS', 'phoneme'])
-    #print(sbt)
-    #sbt = resample(sbt, 4, 194)
-    #print(sbt)
-    #sbt = replace_na(sbt, ['DA_dimension', 'DA_communicative_function', 'senti_p_positive','senti_polarity', 'senti_subjectivity', 'POS', 'phoneme', 'word_vecs', 'sent_vecs', 'word_rate'])
-    #print(sbt)
-    #f_dic = interpolation(sbt, 'nearest',  ['DA_dimension', 'DA_communicative_function', 'senti_p_positive','senti_polarity', 'senti_subjectivity', 'POS', 'phoneme', 'word_vecs', 'sent_vecs', 'word_rate'], onehot2feature)
-    #sbt = resample_from_interpolation(f_dic, 2, 194)
-    #print(sbt)
-    #sbt = delay_and_concat(sbt)
-    #print(sbt)
-
+    sbt = srt2df('/Users/YiSangHyun/Dropbox/Study/Graduate/2018-Winter/Ralphlab/FG/FG_delayed10s_seg0.srt')
+    print(sbt)
+    sbt = googleSTT2df('/Users/YiSangHyun/Dropbox/Study/Graduate/2018-Winter/Ralphlab/FG/seg0_vid.txt')
+    print(sbt)
+    sbt = sbt.iloc[:6] #for testing
+    sbt = add_DA_features(sbt)
+    print("DA done")
+    sbt = add_sentiment_features(sbt)
+    print("Senti done")
+    sbt = add_POS_features(sbt)
+    print("POS done")
+    print(sbt)
+    sbt = add_syntactic_dependencies_features(sbt)
+    print("syntactic dependencies done")
+    print(sbt)
+    sbt = add_word_rate_features(sbt)
+    print("Word rate done")
+    print(sbt)
+    sbt = add_phoneme_features(sbt)
+    print("Phoneme done")
+    print(sbt)
+    sbt = add_sentvec_features(sbt, 'glove-wiki-gigaword-50')
+    print("sentvec done")
+    print(sbt)
+    sbt = add_wordvec_features(sbt, 'glove-wiki-gigaword-50')
+    print("wordvec done")
+    print(sbt)
+    sbt = pd.read_pickle('../data/feature_text.pkl')
+    sbt, onehot2feature = vectorize(sbt, ['DA_dimension', 'DA_communicative_function', 'POS', 'phoneme'])
+    print(sbt)
+    sbt = resample(sbt, 4, 194)
+    print(sbt)
+    sbt = replace_na(sbt, ['DA_dimension', 'DA_communicative_function', 'senti_p_positive','senti_polarity', 'senti_subjectivity', 'POS', 'phoneme', 'word_vecs', 'sent_vecs', 'word_rate'])
+    print(sbt)
+    f_dic = interpolation(sbt, 'nearest',  ['DA_dimension', 'DA_communicative_function', 'senti_p_positive','senti_polarity', 'senti_subjectivity', 'POS', 'phoneme', 'word_vecs', 'sent_vecs', 'word_rate'], onehot2feature)
+    sbt = resample_from_interpolation(f_dic, 2, 194)
+    print(sbt)
+    sbt = delay_and_concat(sbt)
+    print(sbt)
+    '''

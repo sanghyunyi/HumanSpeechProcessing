@@ -1,0 +1,837 @@
+Waiting for operation to complete...
+Transcript: then at time it's letter love Forrest Gump
+Confidence: 0.8198524713516235
+Word: then, start_time: 0.0, end_time: 1.3
+Word: at, start_time: 1.3, end_time: 1.5
+Word: time, start_time: 1.5, end_time: 2.0
+Word: it's, start_time: 2.0, end_time: 2.3
+Word: letter, start_time: 2.3, end_time: 2.8
+Word: love, start_time: 2.8, end_time: 3.7
+Word: Forrest, start_time: 3.7, end_time: 4.9
+Word: Gump, start_time: 4.9, end_time: 5.9
+Transcript:  there's something happening here this one day we was out walking like always and then just like that somebody turned off the rain and the sun come out
+Confidence: 0.8574110865592957
+Word: there's, start_time: 12.0, end_time: 16.5
+Word: something, start_time: 16.5, end_time: 17.1
+Word: happening, start_time: 17.1, end_time: 17.4
+Word: here, start_time: 17.4, end_time: 18.2
+Word: this, start_time: 18.2, end_time: 20.3
+Word: one, start_time: 20.3, end_time: 20.7
+Word: day, start_time: 20.7, end_time: 20.9
+Word: we, start_time: 20.9, end_time: 21.3
+Word: was, start_time: 21.3, end_time: 21.4
+Word: out, start_time: 21.4, end_time: 21.7
+Word: walking, start_time: 21.7, end_time: 21.9
+Word: like, start_time: 21.9, end_time: 22.4
+Word: always, start_time: 22.4, end_time: 22.7
+Word: and, start_time: 23.2, end_time: 24.0
+Word: then, start_time: 24.0, end_time: 24.4
+Word: just, start_time: 24.4, end_time: 25.8
+Word: like, start_time: 25.8, end_time: 26.0
+Word: that, start_time: 26.0, end_time: 26.1
+Word: somebody, start_time: 26.1, end_time: 27.9
+Word: turned, start_time: 27.9, end_time: 28.2
+Word: off, start_time: 28.2, end_time: 28.6
+Word: the, start_time: 28.6, end_time: 28.7
+Word: rain, start_time: 28.7, end_time: 29.2
+Word: and, start_time: 29.2, end_time: 29.5
+Word: the, start_time: 29.5, end_time: 29.6
+Word: sun, start_time: 29.6, end_time: 29.7
+Word: come, start_time: 29.7, end_time: 30.1
+Word: out, start_time: 30.1, end_time: 30.3
+Transcript:  just like Jenny told me to I Ran So Far So Fast it's pretty soon I was all by myself which was a bad Bubba
+Confidence: 0.8412708640098572
+Word: just, start_time: 114.2, end_time: 130.2
+Word: like, start_time: 130.2, end_time: 130.4
+Word: Jenny, start_time: 130.4, end_time: 130.6
+Word: told, start_time: 130.6, end_time: 130.9
+Word: me, start_time: 130.9, end_time: 131.1
+Word: to, start_time: 131.1, end_time: 131.3
+Word: I, start_time: 131.4, end_time: 134.9
+Word: Ran, start_time: 134.9, end_time: 135.1
+Word: So, start_time: 135.1, end_time: 135.4
+Word: Far, start_time: 135.4, end_time: 135.6
+Word: So, start_time: 135.6, end_time: 136.0
+Word: Fast, start_time: 136.0, end_time: 136.2
+Word: it's, start_time: 136.2, end_time: 137.0
+Word: pretty, start_time: 137.0, end_time: 137.3
+Word: soon, start_time: 137.3, end_time: 137.6
+Word: I, start_time: 137.6, end_time: 137.7
+Word: was, start_time: 137.7, end_time: 137.8
+Word: all, start_time: 137.8, end_time: 138.0
+Word: by, start_time: 138.0, end_time: 138.2
+Word: myself, start_time: 138.2, end_time: 138.3
+Word: which, start_time: 138.3, end_time: 139.0
+Word: was, start_time: 139.0, end_time: 139.1
+Word: a, start_time: 139.1, end_time: 139.3
+Word: bad, start_time: 139.3, end_time: 139.7
+Word: Bubba, start_time: 139.7, end_time: 141.5
+Transcript:  Bubba was my best good friend I had to make sure he was okay
+Confidence: 0.8635091781616211
+Word: Bubba, start_time: 144.4, end_time: 145.0
+Word: was, start_time: 145.0, end_time: 145.1
+Word: my, start_time: 145.1, end_time: 145.2
+Word: best, start_time: 145.2, end_time: 145.6
+Word: good, start_time: 145.6, end_time: 145.6
+Word: friend, start_time: 145.6, end_time: 145.9
+Word: I, start_time: 145.9, end_time: 146.1
+Word: had, start_time: 146.1, end_time: 146.2
+Word: to, start_time: 146.2, end_time: 146.3
+Word: make, start_time: 146.3, end_time: 146.5
+Word: sure, start_time: 146.5, end_time: 146.6
+Word: he, start_time: 146.6, end_time: 146.8
+Word: was, start_time: 146.8, end_time: 147.0
+Word: okay, start_time: 147.0, end_time: 147.4
+Transcript:  and on my way back to find Bubba well that was this boy lying on the ground
+Confidence: 0.8875389099121094
+Word: and, start_time: 155.6, end_time: 162.4
+Word: on, start_time: 162.4, end_time: 162.6
+Word: my, start_time: 162.6, end_time: 162.7
+Word: way, start_time: 162.7, end_time: 162.9
+Word: back, start_time: 162.9, end_time: 163.0
+Word: to, start_time: 163.0, end_time: 163.3
+Word: find, start_time: 163.3, end_time: 163.6
+Word: Bubba, start_time: 163.6, end_time: 164.0
+Word: well, start_time: 164.1, end_time: 165.3
+Word: that, start_time: 165.3, end_time: 165.5
+Word: was, start_time: 165.5, end_time: 165.7
+Word: this, start_time: 165.7, end_time: 165.8
+Word: boy, start_time: 165.8, end_time: 166.1
+Word: lying, start_time: 166.1, end_time: 166.5
+Word: on, start_time: 166.5, end_time: 166.6
+Word: the, start_time: 166.6, end_time: 166.8
+Word: ground, start_time: 166.8, end_time: 167.1
+Transcript:  every time I went back looking for Bubba somebody else was saying help me for help me
+Confidence: 0.8557512164115906
+Word: every, start_time: 186.4, end_time: 194.4
+Word: time, start_time: 194.4, end_time: 194.7
+Word: I, start_time: 194.7, end_time: 194.8
+Word: went, start_time: 194.8, end_time: 195.0
+Word: back, start_time: 195.0, end_time: 195.1
+Word: looking, start_time: 195.1, end_time: 195.5
+Word: for, start_time: 195.5, end_time: 195.7
+Word: Bubba, start_time: 195.7, end_time: 196.1
+Word: somebody, start_time: 196.1, end_time: 196.9
+Word: else, start_time: 196.9, end_time: 197.2
+Word: was, start_time: 197.2, end_time: 197.4
+Word: saying, start_time: 197.4, end_time: 197.5
+Word: help, start_time: 197.5, end_time: 198.3
+Word: me, start_time: 198.3, end_time: 198.4
+Word: for, start_time: 198.4, end_time: 198.8
+Word: help, start_time: 198.8, end_time: 199.3
+Word: me, start_time: 199.3, end_time: 199.6
+Transcript:  I started to get scared that I might never find Bubble danger close we got Charlie all over this area then it felt like something just jumped up and bit
+Confidence: 0.9020529389381409
+Word: I, start_time: 215.3, end_time: 217.0
+Word: started, start_time: 217.0, end_time: 217.5
+Word: to, start_time: 217.5, end_time: 217.6
+Word: get, start_time: 217.6, end_time: 217.7
+Word: scared, start_time: 217.7, end_time: 217.9
+Word: that, start_time: 217.9, end_time: 218.4
+Word: I, start_time: 218.4, end_time: 218.5
+Word: might, start_time: 218.5, end_time: 218.7
+Word: never, start_time: 218.7, end_time: 218.9
+Word: find, start_time: 218.9, end_time: 219.2
+Word: Bubble, start_time: 219.2, end_time: 219.8
+Word: danger, start_time: 219.8, end_time: 223.9
+Word: close, start_time: 223.9, end_time: 223.9
+Word: we, start_time: 224.2, end_time: 224.7
+Word: got, start_time: 224.7, end_time: 224.9
+Word: Charlie, start_time: 224.9, end_time: 225.2
+Word: all, start_time: 225.2, end_time: 225.6
+Word: over, start_time: 225.6, end_time: 225.8
+Word: this, start_time: 225.8, end_time: 225.9
+Word: area, start_time: 225.9, end_time: 226.1
+Word: then, start_time: 226.1, end_time: 253.9
+Word: it, start_time: 253.9, end_time: 254.0
+Word: felt, start_time: 254.0, end_time: 254.3
+Word: like, start_time: 254.3, end_time: 254.5
+Word: something, start_time: 254.5, end_time: 254.8
+Word: just, start_time: 254.8, end_time: 254.8
+Word: jumped, start_time: 254.8, end_time: 255.6
+Word: up, start_time: 255.6, end_time: 255.7
+Word: and, start_time: 255.7, end_time: 255.9
+Word: bit, start_time: 255.9, end_time: 256.1
+Transcript:  okay Force okay
+Confidence: 0.7748022079467773
+Word: okay, start_time: 325.0, end_time: 326.8
+Word: Force, start_time: 326.8, end_time: 327.4
+Word: okay, start_time: 327.4, end_time: 329.1
+Transcript:  if I didn't know this was going to be the last time me and Bubba was going to talk a lot of thought of something better to say
+Confidence: 0.8650634288787842
+Word: if, start_time: 391.9, end_time: 402.1
+Word: I, start_time: 402.1, end_time: 402.2
+Word: didn't, start_time: 402.2, end_time: 402.5
+Word: know, start_time: 402.5, end_time: 402.6
+Word: this, start_time: 402.6, end_time: 402.9
+Word: was, start_time: 402.9, end_time: 403.1
+Word: going, start_time: 403.1, end_time: 403.3
+Word: to, start_time: 403.3, end_time: 403.3
+Word: be, start_time: 403.3, end_time: 403.5
+Word: the, start_time: 403.5, end_time: 403.6
+Word: last, start_time: 403.6, end_time: 403.8
+Word: time, start_time: 403.8, end_time: 404.1
+Word: me, start_time: 404.1, end_time: 404.4
+Word: and, start_time: 404.4, end_time: 404.5
+Word: Bubba, start_time: 404.5, end_time: 404.8
+Word: was, start_time: 404.8, end_time: 405.0
+Word: going, start_time: 405.0, end_time: 405.2
+Word: to, start_time: 405.2, end_time: 405.2
+Word: talk, start_time: 405.2, end_time: 405.6
+Word: a, start_time: 405.6, end_time: 406.4
+Word: lot, start_time: 406.4, end_time: 406.5
+Word: of, start_time: 406.5, end_time: 406.6
+Word: thought, start_time: 406.6, end_time: 406.8
+Word: of, start_time: 406.8, end_time: 406.9
+Word: something, start_time: 406.9, end_time: 407.2
+Word: better, start_time: 407.2, end_time: 407.3
+Word: to, start_time: 407.3, end_time: 407.6
+Word: say, start_time: 407.6, end_time: 407.6
+Transcript:  a forest
+Confidence: 0.5727068781852722
+Word: a, start_time: 410.9, end_time: 411.4
+Word: forest, start_time: 411.4, end_time: 411.8
+Transcript:  what just happened
+Confidence: 0.7843590974807739
+Word: what, start_time: 416.5, end_time: 417.0
+Word: just, start_time: 417.0, end_time: 417.3
+Word: happened, start_time: 417.3, end_time: 417.4
+Transcript:  got shot
+Confidence: 0.7003228068351746
+Word: got, start_time: 419.2, end_time: 419.7
+Word: shot, start_time: 419.7, end_time: 420.1
+Transcript:  damn Bubba said something I won't ever forget I wanna go home
+Confidence: 0.8345460295677185
+Word: damn, start_time: 422.2, end_time: 422.9
+Word: Bubba, start_time: 422.9, end_time: 423.8
+Word: said, start_time: 423.8, end_time: 424.2
+Word: something, start_time: 424.2, end_time: 424.7
+Word: I, start_time: 424.7, end_time: 424.8
+Word: won't, start_time: 424.8, end_time: 425.0
+Word: ever, start_time: 425.0, end_time: 425.4
+Word: forget, start_time: 425.4, end_time: 425.9
+Word: I, start_time: 425.9, end_time: 427.4
+Word: wanna, start_time: 427.4, end_time: 427.6
+Word: go, start_time: 427.6, end_time: 427.8
+Word: home, start_time: 427.8, end_time: 427.9
+Transcript:  Bubba was my best good friend
+Confidence: 0.8421590328216553
+Word: Bubba, start_time: 430.4, end_time: 430.9
+Word: was, start_time: 430.9, end_time: 431.1
+Word: my, start_time: 431.1, end_time: 431.2
+Word: best, start_time: 431.2, end_time: 431.7
+Word: good, start_time: 431.7, end_time: 431.8
+Word: friend, start_time: 431.8, end_time: 432.2
+Transcript:  and even I know that ain't something you can find just around the corner Bob was going to be a shrimp boat captain but it's Daddy died right there by that Rhythm that now
+Confidence: 0.8789092302322388
+Word: and, start_time: 433.4, end_time: 433.8
+Word: even, start_time: 433.8, end_time: 434.0
+Word: I, start_time: 434.0, end_time: 434.1
+Word: know, start_time: 434.1, end_time: 434.1
+Word: that, start_time: 434.1, end_time: 434.4
+Word: ain't, start_time: 434.4, end_time: 434.7
+Word: something, start_time: 434.7, end_time: 435.0
+Word: you, start_time: 435.0, end_time: 435.1
+Word: can, start_time: 435.1, end_time: 435.2
+Word: find, start_time: 435.2, end_time: 435.4
+Word: just, start_time: 435.4, end_time: 435.6
+Word: around, start_time: 435.6, end_time: 436.0
+Word: the, start_time: 436.0, end_time: 436.2
+Word: corner, start_time: 436.2, end_time: 436.6
+Word: Bob, start_time: 436.8, end_time: 438.4
+Word: was, start_time: 438.4, end_time: 438.5
+Word: going, start_time: 438.5, end_time: 439.2
+Word: to, start_time: 439.2, end_time: 439.5
+Word: be, start_time: 439.5, end_time: 439.6
+Word: a, start_time: 439.6, end_time: 439.6
+Word: shrimp, start_time: 439.6, end_time: 440.2
+Word: boat, start_time: 440.2, end_time: 440.5
+Word: captain, start_time: 440.5, end_time: 440.7
+Word: but, start_time: 440.7, end_time: 441.3
+Word: it's, start_time: 441.3, end_time: 442.4
+Word: Daddy, start_time: 442.4, end_time: 442.7
+Word: died, start_time: 442.7, end_time: 442.9
+Word: right, start_time: 442.9, end_time: 443.1
+Word: there, start_time: 443.1, end_time: 443.3
+Word: by, start_time: 443.3, end_time: 443.5
+Word: that, start_time: 443.5, end_time: 443.6
+Word: Rhythm, start_time: 443.6, end_time: 444.0
+Word: that, start_time: 444.0, end_time: 444.2
+Word: now, start_time: 444.2, end_time: 444.6
+Transcript:  that's all I have to say about that
+Confidence: 0.8400986790657043
+Word: that's, start_time: 450.2, end_time: 450.7
+Word: all, start_time: 450.7, end_time: 450.9
+Word: I, start_time: 450.9, end_time: 451.0
+Word: have, start_time: 451.0, end_time: 451.2
+Word: to, start_time: 451.2, end_time: 451.3
+Word: say, start_time: 451.3, end_time: 451.4
+Word: about, start_time: 451.4, end_time: 451.7
+Word: that, start_time: 451.7, end_time: 451.9
+Transcript:  it was a bullet wasn't it
+Confidence: 0.8086784482002258
+Word: it, start_time: 454.5, end_time: 454.9
+Word: was, start_time: 454.9, end_time: 455.1
+Word: a, start_time: 455.1, end_time: 455.1
+Word: bullet, start_time: 455.1, end_time: 455.5
+Word: wasn't, start_time: 455.5, end_time: 455.8
+Word: it, start_time: 455.8, end_time: 456.0
+Transcript:  a bullet the jumped up and bit you
+Confidence: 0.8334808349609375
+Word: a, start_time: 458.7, end_time: 459.1
+Word: bullet, start_time: 459.1, end_time: 459.5
+Word: the, start_time: 459.5, end_time: 460.3
+Word: jumped, start_time: 460.3, end_time: 460.7
+Word: up, start_time: 460.7, end_time: 460.9
+Word: and, start_time: 460.9, end_time: 461.0
+Word: bit, start_time: 461.0, end_time: 461.2
+Word: you, start_time: 461.2, end_time: 461.4
+Transcript:  oh yes sir let me directly in the buttocks
+Confidence: 0.8088669776916504
+Word: oh, start_time: 463.7, end_time: 464.0
+Word: yes, start_time: 464.0, end_time: 465.5
+Word: sir, start_time: 465.5, end_time: 465.8
+Word: let, start_time: 465.8, end_time: 466.2
+Word: me, start_time: 466.2, end_time: 466.4
+Word: directly, start_time: 466.4, end_time: 466.7
+Word: in, start_time: 466.7, end_time: 466.9
+Word: the, start_time: 466.9, end_time: 467.0
+Word: buttocks, start_time: 467.0, end_time: 467.7
+Transcript:  they said it was a million-dollar wound but the Army must keep that money because I still ain't seen a nickel that million dollars
+Confidence: 0.8700079321861267
+Word: they, start_time: 468.9, end_time: 469.3
+Word: said, start_time: 469.3, end_time: 469.5
+Word: it, start_time: 469.5, end_time: 469.6
+Word: was, start_time: 469.6, end_time: 470.1
+Word: a, start_time: 470.1, end_time: 470.2
+Word: million-dollar, start_time: 470.2, end_time: 470.9
+Word: wound, start_time: 470.9, end_time: 471.3
+Word: but, start_time: 471.3, end_time: 471.7
+Word: the, start_time: 471.7, end_time: 473.1
+Word: Army, start_time: 473.1, end_time: 473.4
+Word: must, start_time: 473.4, end_time: 473.5
+Word: keep, start_time: 473.5, end_time: 473.7
+Word: that, start_time: 473.7, end_time: 473.9
+Word: money, start_time: 473.9, end_time: 474.2
+Word: because, start_time: 474.2, end_time: 474.4
+Word: I, start_time: 474.4, end_time: 474.4
+Word: still, start_time: 474.4, end_time: 474.6
+Word: ain't, start_time: 474.6, end_time: 474.8
+Word: seen, start_time: 474.8, end_time: 475.0
+Word: a, start_time: 475.0, end_time: 475.1
+Word: nickel, start_time: 475.1, end_time: 475.2
+Word: that, start_time: 475.2, end_time: 475.4
+Word: million, start_time: 475.4, end_time: 475.8
+Word: dollars, start_time: 475.8, end_time: 476.2
+Transcript:  the only good thing about being wounded in about talks is the ice cream like gave me all the ice cream I could eat and guess what a good friend of mine was in the bed right next door look at the day I got you some ice cream
+Confidence: 0.8884298801422119
+Word: the, start_time: 478.3, end_time: 478.8
+Word: only, start_time: 478.8, end_time: 479.1
+Word: good, start_time: 479.1, end_time: 479.3
+Word: thing, start_time: 479.3, end_time: 479.5
+Word: about, start_time: 479.5, end_time: 479.7
+Word: being, start_time: 479.7, end_time: 480.1
+Word: wounded, start_time: 480.1, end_time: 480.6
+Word: in, start_time: 480.6, end_time: 480.7
+Word: about, start_time: 480.7, end_time: 481.0
+Word: talks, start_time: 481.0, end_time: 481.5
+Word: is, start_time: 481.5, end_time: 482.5
+Word: the, start_time: 482.5, end_time: 482.5
+Word: ice, start_time: 482.5, end_time: 482.8
+Word: cream, start_time: 482.8, end_time: 482.9
+Word: like, start_time: 482.9, end_time: 484.3
+Word: gave, start_time: 484.3, end_time: 484.5
+Word: me, start_time: 484.5, end_time: 484.6
+Word: all, start_time: 484.6, end_time: 484.8
+Word: the, start_time: 484.8, end_time: 485.0
+Word: ice, start_time: 485.0, end_time: 485.2
+Word: cream, start_time: 485.2, end_time: 485.4
+Word: I, start_time: 485.4, end_time: 485.5
+Word: could, start_time: 485.5, end_time: 485.7
+Word: eat, start_time: 485.7, end_time: 486.0
+Word: and, start_time: 486.1, end_time: 486.9
+Word: guess, start_time: 486.9, end_time: 487.1
+Word: what, start_time: 487.1, end_time: 487.3
+Word: a, start_time: 487.6, end_time: 488.1
+Word: good, start_time: 488.1, end_time: 488.3
+Word: friend, start_time: 488.3, end_time: 488.6
+Word: of, start_time: 488.6, end_time: 488.6
+Word: mine, start_time: 488.6, end_time: 488.8
+Word: was, start_time: 488.8, end_time: 488.9
+Word: in, start_time: 488.9, end_time: 489.0
+Word: the, start_time: 489.0, end_time: 489.1
+Word: bed, start_time: 489.1, end_time: 489.3
+Word: right, start_time: 489.3, end_time: 489.5
+Word: next, start_time: 489.5, end_time: 489.6
+Word: door, start_time: 489.6, end_time: 489.8
+Word: look, start_time: 489.8, end_time: 493.3
+Word: at, start_time: 493.3, end_time: 493.4
+Word: the, start_time: 493.4, end_time: 493.5
+Word: day, start_time: 493.5, end_time: 493.7
+Word: I, start_time: 493.7, end_time: 494.7
+Word: got, start_time: 494.7, end_time: 494.9
+Word: you, start_time: 494.9, end_time: 495.1
+Word: some, start_time: 495.1, end_time: 495.3
+Word: ice, start_time: 495.3, end_time: 495.4
+Word: cream, start_time: 495.4, end_time: 495.6
+Transcript:  dad ice cream
+Confidence: 0.8032676577568054
+Word: dad, start_time: 498.0, end_time: 499.0
+Word: ice, start_time: 499.0, end_time: 499.2
+Word: cream, start_time: 499.2, end_time: 499.9
+Transcript:  it's time for your bath lieutenant
+Confidence: 0.8493630290031433
+Word: it's, start_time: 510.5, end_time: 512.0
+Word: time, start_time: 512.0, end_time: 512.2
+Word: for, start_time: 512.2, end_time: 512.3
+Word: your, start_time: 512.3, end_time: 512.4
+Word: bath, start_time: 512.4, end_time: 512.6
+Word: lieutenant, start_time: 512.6, end_time: 513.3
+Transcript:  Harper
+Confidence: 0.7001222968101501
+Word: Harper, start_time: 520.9, end_time: 522.5
+Transcript:  Webster
+Confidence: 0.6851275563240051
+Word: Webster, start_time: 530.5, end_time: 531.3
+Transcript:  nickel
+Confidence: 0.7018163800239563
+Word: nickel, start_time: 541.4, end_time: 543.1
+Transcript:  how can you watch this stupid shit
+Confidence: 0.8484411239624023
+Word: how, start_time: 559.0, end_time: 566.0
+Word: can, start_time: 566.0, end_time: 566.3
+Word: you, start_time: 566.3, end_time: 566.4
+Word: watch, start_time: 566.4, end_time: 566.6
+Word: this, start_time: 566.6, end_time: 566.8
+Word: stupid, start_time: 566.8, end_time: 567.8
+Word: shit, start_time: 567.8, end_time: 568.0
+Transcript:  let's go
+Confidence: 0.781195342540741
+Word: let's, start_time: 575.4, end_time: 578.2
+Word: go, start_time: 578.2, end_time: 578.3
+Transcript:  you know how to play this
+Confidence: 0.8590717315673828
+Word: you, start_time: 580.9, end_time: 581.3
+Word: know, start_time: 581.3, end_time: 581.3
+Word: how, start_time: 581.3, end_time: 581.4
+Word: to, start_time: 581.4, end_time: 581.5
+Word: play, start_time: 581.5, end_time: 581.7
+Word: this, start_time: 581.7, end_time: 581.8
+Transcript:  come on let me show you had a secret to this game is no matter what happens never ever Take Your Eye Off the Ball
+Confidence: 0.8715627193450928
+Word: come, start_time: 584.2, end_time: 584.6
+Word: on, start_time: 584.6, end_time: 584.8
+Word: let, start_time: 584.8, end_time: 585.0
+Word: me, start_time: 585.0, end_time: 585.1
+Word: show, start_time: 585.1, end_time: 585.1
+Word: you, start_time: 585.1, end_time: 585.4
+Word: had, start_time: 585.4, end_time: 588.6
+Word: a, start_time: 588.6, end_time: 588.7
+Word: secret, start_time: 588.7, end_time: 588.9
+Word: to, start_time: 588.9, end_time: 589.2
+Word: this, start_time: 589.2, end_time: 589.3
+Word: game, start_time: 589.3, end_time: 589.7
+Word: is, start_time: 589.7, end_time: 589.8
+Word: no, start_time: 589.8, end_time: 590.9
+Word: matter, start_time: 590.9, end_time: 591.2
+Word: what, start_time: 591.2, end_time: 591.3
+Word: happens, start_time: 591.3, end_time: 591.5
+Word: never, start_time: 591.5, end_time: 593.2
+Word: ever, start_time: 593.2, end_time: 593.5
+Word: Take, start_time: 593.5, end_time: 595.6
+Word: Your, start_time: 595.6, end_time: 595.7
+Word: Eye, start_time: 595.7, end_time: 595.7
+Word: Off, start_time: 595.7, end_time: 595.9
+Word: the, start_time: 595.9, end_time: 596.1
+Word: Ball, start_time: 596.1, end_time: 596.2
+Transcript:  for some reason 10-pound can their natural to me see anybody can play so I started buying it all the time
+Confidence: 0.8908910155296326
+Word: for, start_time: 599.1, end_time: 604.4
+Word: some, start_time: 604.4, end_time: 604.6
+Word: reason, start_time: 604.6, end_time: 605.1
+Word: 10-pound, start_time: 605.1, end_time: 605.9
+Word: can, start_time: 605.9, end_time: 606.2
+Word: their, start_time: 606.2, end_time: 606.4
+Word: natural, start_time: 606.4, end_time: 607.0
+Word: to, start_time: 607.0, end_time: 607.1
+Word: me, start_time: 607.1, end_time: 607.3
+Word: see, start_time: 607.3, end_time: 608.3
+Word: anybody, start_time: 608.3, end_time: 609.8
+Word: can, start_time: 609.8, end_time: 610.1
+Word: play, start_time: 610.1, end_time: 610.2
+Word: so, start_time: 610.4, end_time: 611.6
+Word: I, start_time: 611.6, end_time: 611.8
+Word: started, start_time: 611.8, end_time: 612.2
+Word: buying, start_time: 612.2, end_time: 612.5
+Word: it, start_time: 612.5, end_time: 612.7
+Word: all, start_time: 612.7, end_time: 612.9
+Word: the, start_time: 612.9, end_time: 613.0
+Word: time, start_time: 613.0, end_time: 613.4
+Transcript:  I play ping pong even when I didn't have anyone to play ping pong with
+Confidence: 0.7976433038711548
+Word: I, start_time: 614.5, end_time: 615.3
+Word: play, start_time: 615.3, end_time: 615.6
+Word: ping, start_time: 615.6, end_time: 615.9
+Word: pong, start_time: 615.9, end_time: 616.0
+Word: even, start_time: 616.4, end_time: 616.9
+Word: when, start_time: 616.9, end_time: 617.0
+Word: I, start_time: 617.0, end_time: 617.1
+Word: didn't, start_time: 617.1, end_time: 617.4
+Word: have, start_time: 617.4, end_time: 617.5
+Word: anyone, start_time: 617.5, end_time: 617.9
+Word: to, start_time: 617.9, end_time: 618.0
+Word: play, start_time: 618.0, end_time: 618.2
+Word: ping, start_time: 618.2, end_time: 618.5
+Word: pong, start_time: 618.5, end_time: 618.6
+Word: with, start_time: 618.6, end_time: 619.2
+Transcript:  the hospital's people said it made me look like a duck in water whatever that means even Lieutenant Diane would come and watch me play
+Confidence: 0.8473674654960632
+Word: the, start_time: 626.6, end_time: 627.8
+Word: hospital's, start_time: 627.8, end_time: 628.5
+Word: people, start_time: 628.5, end_time: 628.9
+Word: said, start_time: 628.9, end_time: 629.0
+Word: it, start_time: 629.0, end_time: 629.3
+Word: made, start_time: 629.3, end_time: 629.6
+Word: me, start_time: 629.6, end_time: 629.7
+Word: look, start_time: 629.7, end_time: 629.8
+Word: like, start_time: 629.8, end_time: 630.2
+Word: a, start_time: 630.2, end_time: 630.5
+Word: duck, start_time: 630.5, end_time: 630.9
+Word: in, start_time: 630.9, end_time: 631.2
+Word: water, start_time: 631.2, end_time: 631.3
+Word: whatever, start_time: 631.3, end_time: 632.3
+Word: that, start_time: 632.3, end_time: 632.6
+Word: means, start_time: 632.6, end_time: 632.9
+Word: even, start_time: 632.9, end_time: 634.4
+Word: Lieutenant, start_time: 634.4, end_time: 635.0
+Word: Diane, start_time: 635.0, end_time: 635.3
+Word: would, start_time: 635.3, end_time: 635.5
+Word: come, start_time: 635.5, end_time: 635.6
+Word: and, start_time: 635.6, end_time: 635.8
+Word: watch, start_time: 635.8, end_time: 635.9
+Word: me, start_time: 635.9, end_time: 636.1
+Word: play, start_time: 636.1, end_time: 636.2
+Transcript:  PFC Gump
+Confidence: 0.7705853581428528
+Word: PFC, start_time: 645.1, end_time: 645.8
+Word: Gump, start_time: 645.8, end_time: 646.2
+Transcript:  yes sir
+Confidence: 0.7117262482643127
+Word: yes, start_time: 647.0, end_time: 648.4
+Word: sir, start_time: 648.4, end_time: 648.6
+Transcript:  as you were
+Confidence: 0.830375075340271
+Word: as, start_time: 649.9, end_time: 650.4
+Word: you, start_time: 650.4, end_time: 650.5
+Word: were, start_time: 650.5, end_time: 650.7
+Transcript:  son
+Confidence: 0.7086276412010193
+Word: son, start_time: 651.9, end_time: 652.7
+Transcript:  you've been awarded the Medal of Honor yes what Lieutenant dying they want to give me a
+Confidence: 0.8386576771736145
+Word: you've, start_time: 654.2, end_time: 654.5
+Word: been, start_time: 654.5, end_time: 654.6
+Word: awarded, start_time: 654.6, end_time: 654.8
+Word: the, start_time: 654.8, end_time: 655.0
+Word: Medal, start_time: 655.0, end_time: 655.3
+Word: of, start_time: 655.3, end_time: 655.3
+Word: Honor, start_time: 655.3, end_time: 655.4
+Word: yes, start_time: 655.4, end_time: 656.9
+Word: what, start_time: 656.9, end_time: 657.3
+Word: Lieutenant, start_time: 657.3, end_time: 657.5
+Word: dying, start_time: 657.5, end_time: 658.2
+Word: they, start_time: 658.2, end_time: 659.2
+Word: want, start_time: 659.2, end_time: 659.5
+Word: to, start_time: 659.5, end_time: 659.6
+Word: give, start_time: 659.6, end_time: 659.8
+Word: me, start_time: 659.8, end_time: 659.8
+Word: a, start_time: 659.8, end_time: 660.0
+Transcript:  now
+Confidence: 0.6018909811973572
+Word: now, start_time: 666.5, end_time: 666.9
+Transcript:  well they do with Lieutenant Dan
+Confidence: 0.7949696183204651
+Word: well, start_time: 668.6, end_time: 669.0
+Word: they, start_time: 669.0, end_time: 669.1
+Word: do, start_time: 669.1, end_time: 669.3
+Word: with, start_time: 669.3, end_time: 669.5
+Word: Lieutenant, start_time: 669.5, end_time: 670.0
+Word: Dan, start_time: 670.0, end_time: 670.3
+Transcript:  two weeks later I left Vietnam ceremony was kicked off with a candid speech by the president regarding the need for further escalation of the war in Vietnam President Johnson awarded for Medals of Honor two men from each of the arm Circle America owes you a debt of gratitude son understand you were wounded
+Confidence: 0.9016788601875305
+Word: two, start_time: 678.0, end_time: 678.9
+Word: weeks, start_time: 678.9, end_time: 679.2
+Word: later, start_time: 679.2, end_time: 679.3
+Word: I, start_time: 679.3, end_time: 680.2
+Word: left, start_time: 680.2, end_time: 680.4
+Word: Vietnam, start_time: 680.4, end_time: 680.7
+Word: ceremony, start_time: 680.7, end_time: 683.0
+Word: was, start_time: 683.0, end_time: 683.1
+Word: kicked, start_time: 683.1, end_time: 683.4
+Word: off, start_time: 683.4, end_time: 683.4
+Word: with, start_time: 683.4, end_time: 683.7
+Word: a, start_time: 683.7, end_time: 683.8
+Word: candid, start_time: 683.8, end_time: 684.3
+Word: speech, start_time: 684.3, end_time: 684.7
+Word: by, start_time: 684.7, end_time: 684.8
+Word: the, start_time: 684.8, end_time: 684.9
+Word: president, start_time: 684.9, end_time: 685.0
+Word: regarding, start_time: 685.0, end_time: 686.0
+Word: the, start_time: 686.0, end_time: 686.2
+Word: need, start_time: 686.2, end_time: 686.3
+Word: for, start_time: 686.3, end_time: 686.4
+Word: further, start_time: 686.4, end_time: 686.7
+Word: escalation, start_time: 686.7, end_time: 687.4
+Word: of, start_time: 687.4, end_time: 687.5
+Word: the, start_time: 687.5, end_time: 687.6
+Word: war, start_time: 687.6, end_time: 687.7
+Word: in, start_time: 687.7, end_time: 688.2
+Word: Vietnam, start_time: 688.2, end_time: 688.2
+Word: President, start_time: 688.8, end_time: 689.7
+Word: Johnson, start_time: 689.7, end_time: 690.0
+Word: awarded, start_time: 690.0, end_time: 690.4
+Word: for, start_time: 690.4, end_time: 690.6
+Word: Medals, start_time: 690.6, end_time: 691.0
+Word: of, start_time: 691.0, end_time: 691.1
+Word: Honor, start_time: 691.1, end_time: 691.4
+Word: two, start_time: 691.4, end_time: 691.6
+Word: men, start_time: 691.6, end_time: 691.8
+Word: from, start_time: 691.8, end_time: 691.9
+Word: each, start_time: 691.9, end_time: 692.1
+Word: of, start_time: 692.1, end_time: 692.4
+Word: the, start_time: 692.4, end_time: 692.4
+Word: arm, start_time: 692.4, end_time: 692.7
+Word: Circle, start_time: 692.7, end_time: 693.0
+Word: America, start_time: 693.0, end_time: 693.6
+Word: owes, start_time: 693.6, end_time: 693.9
+Word: you, start_time: 693.9, end_time: 694.1
+Word: a, start_time: 694.1, end_time: 694.2
+Word: debt, start_time: 694.2, end_time: 694.3
+Word: of, start_time: 694.3, end_time: 694.5
+Word: gratitude, start_time: 694.5, end_time: 694.6
+Word: son, start_time: 694.6, end_time: 695.3
+Word: understand, start_time: 695.3, end_time: 698.4
+Word: you, start_time: 698.4, end_time: 698.5
+Word: were, start_time: 698.5, end_time: 698.6
+Word: wounded, start_time: 698.6, end_time: 698.9
+Transcript:  where were you hit in the buttocks uh that must be a say that like see that
+Confidence: 0.8289197087287903
+Word: where, start_time: 699.6, end_time: 700.1
+Word: were, start_time: 700.1, end_time: 700.2
+Word: you, start_time: 700.2, end_time: 700.3
+Word: hit, start_time: 700.3, end_time: 700.5
+Word: in, start_time: 700.5, end_time: 701.5
+Word: the, start_time: 701.5, end_time: 701.7
+Word: buttocks, start_time: 701.7, end_time: 702.3
+Word: uh, start_time: 702.3, end_time: 702.4
+Word: that, start_time: 702.4, end_time: 703.6
+Word: must, start_time: 703.6, end_time: 703.9
+Word: be, start_time: 703.9, end_time: 704.0
+Word: a, start_time: 704.0, end_time: 704.1
+Word: say, start_time: 704.1, end_time: 704.3
+Word: that, start_time: 704.3, end_time: 705.5
+Word: like, start_time: 705.5, end_time: 705.9
+Word: see, start_time: 705.9, end_time: 706.1
+Word: that, start_time: 706.1, end_time: 706.4
+Transcript:  after that Mama went to the hotel to lay down so I went out for a walk to see on nation's capital
+Confidence: 0.8805957436561584
+Word: after, start_time: 709.0, end_time: 724.8
+Word: that, start_time: 724.8, end_time: 725.2
+Word: Mama, start_time: 725.2, end_time: 725.8
+Word: went, start_time: 725.8, end_time: 726.1
+Word: to, start_time: 726.1, end_time: 726.2
+Word: the, start_time: 726.2, end_time: 726.3
+Word: hotel, start_time: 726.3, end_time: 726.5
+Word: to, start_time: 726.5, end_time: 726.8
+Word: lay, start_time: 726.8, end_time: 727.1
+Word: down, start_time: 727.1, end_time: 727.2
+Word: so, start_time: 727.2, end_time: 728.3
+Word: I, start_time: 728.3, end_time: 728.9
+Word: went, start_time: 728.9, end_time: 729.1
+Word: out, start_time: 729.1, end_time: 729.3
+Word: for, start_time: 729.3, end_time: 729.6
+Word: a, start_time: 729.6, end_time: 729.8
+Word: walk, start_time: 729.8, end_time: 730.0
+Word: to, start_time: 730.0, end_time: 730.2
+Word: see, start_time: 730.2, end_time: 730.3
+Word: on, start_time: 730.3, end_time: 730.5
+Word: nation's, start_time: 730.5, end_time: 731.0
+Word: capital, start_time: 731.0, end_time: 731.8
+Transcript:  giving a little talk and for some reason he was wearing an American flag for a shut and he liked to say the f word a lot as this and are fat and every time he said the f word
+Confidence: 0.8557794094085693
+Word: giving, start_time: 733.0, end_time: 778.3
+Word: a, start_time: 778.3, end_time: 778.3
+Word: little, start_time: 778.3, end_time: 778.4
+Word: talk, start_time: 778.4, end_time: 779.0
+Word: and, start_time: 779.0, end_time: 779.7
+Word: for, start_time: 779.7, end_time: 779.8
+Word: some, start_time: 779.8, end_time: 780.0
+Word: reason, start_time: 780.0, end_time: 780.1
+Word: he, start_time: 780.1, end_time: 780.5
+Word: was, start_time: 780.5, end_time: 780.6
+Word: wearing, start_time: 780.6, end_time: 781.0
+Word: an, start_time: 781.0, end_time: 781.1
+Word: American, start_time: 781.1, end_time: 781.6
+Word: flag, start_time: 781.6, end_time: 781.7
+Word: for, start_time: 781.7, end_time: 782.2
+Word: a, start_time: 782.2, end_time: 782.4
+Word: shut, start_time: 782.4, end_time: 782.8
+Word: and, start_time: 782.8, end_time: 784.7
+Word: he, start_time: 784.7, end_time: 784.9
+Word: liked, start_time: 784.9, end_time: 785.4
+Word: to, start_time: 785.4, end_time: 785.5
+Word: say, start_time: 785.5, end_time: 785.8
+Word: the, start_time: 785.8, end_time: 786.2
+Word: f, start_time: 786.2, end_time: 786.6
+Word: word, start_time: 786.6, end_time: 786.7
+Word: a, start_time: 786.7, end_time: 787.4
+Word: lot, start_time: 787.4, end_time: 787.8
+Word: as, start_time: 787.8, end_time: 789.0
+Word: this, start_time: 789.0, end_time: 789.2
+Word: and, start_time: 789.2, end_time: 789.5
+Word: are, start_time: 789.5, end_time: 789.7
+Word: fat, start_time: 789.7, end_time: 790.1
+Word: and, start_time: 790.1, end_time: 790.8
+Word: every, start_time: 790.8, end_time: 791.0
+Word: time, start_time: 791.0, end_time: 791.3
+Word: he, start_time: 791.3, end_time: 791.4
+Word: said, start_time: 791.4, end_time: 791.7
+Word: the, start_time: 791.7, end_time: 791.8
+Word: f, start_time: 791.8, end_time: 792.0
+Word: word, start_time: 792.0, end_time: 792.1
+Transcript:  but for some reason well they gym
+Confidence: 0.8167813420295715
+Word: but, start_time: 793.0, end_time: 793.3
+Word: for, start_time: 793.3, end_time: 793.4
+Word: some, start_time: 793.4, end_time: 793.7
+Word: reason, start_time: 793.7, end_time: 793.7
+Word: well, start_time: 794.2, end_time: 794.6
+Word: they, start_time: 794.6, end_time: 794.8
+Word: gym, start_time: 794.8, end_time: 795.4
+Transcript:  tell us a little bit about the warm water in Vietnam boy being fucking day well there was only one thing I could say about the war in Vietnam well there's only one thing I could say about
+Confidence: 0.8502913117408752
+Word: tell, start_time: 824.2, end_time: 825.0
+Word: us, start_time: 825.0, end_time: 825.1
+Word: a, start_time: 825.1, end_time: 825.2
+Word: little, start_time: 825.2, end_time: 825.2
+Word: bit, start_time: 825.2, end_time: 825.4
+Word: about, start_time: 825.4, end_time: 825.5
+Word: the, start_time: 825.5, end_time: 825.8
+Word: warm, start_time: 825.8, end_time: 826.0
+Word: water, start_time: 826.0, end_time: 827.6
+Word: in, start_time: 827.6, end_time: 827.7
+Word: Vietnam, start_time: 827.7, end_time: 828.3
+Word: boy, start_time: 828.3, end_time: 829.5
+Word: being, start_time: 829.5, end_time: 830.2
+Word: fucking, start_time: 830.2, end_time: 830.9
+Word: day, start_time: 830.9, end_time: 831.3
+Word: well, start_time: 831.3, end_time: 856.9
+Word: there, start_time: 856.9, end_time: 857.7
+Word: was, start_time: 857.7, end_time: 857.9
+Word: only, start_time: 857.9, end_time: 858.0
+Word: one, start_time: 858.0, end_time: 858.4
+Word: thing, start_time: 858.4, end_time: 858.5
+Word: I, start_time: 858.5, end_time: 858.7
+Word: could, start_time: 858.7, end_time: 858.9
+Word: say, start_time: 858.9, end_time: 859.0
+Word: about, start_time: 859.0, end_time: 859.2
+Word: the, start_time: 859.2, end_time: 859.5
+Word: war, start_time: 859.5, end_time: 859.7
+Word: in, start_time: 859.7, end_time: 859.9
+Word: Vietnam, start_time: 859.9, end_time: 859.9
+Word: well, start_time: 860.8, end_time: 861.0
+Word: there's, start_time: 861.0, end_time: 861.1
+Word: only, start_time: 861.1, end_time: 861.2
+Word: one, start_time: 861.2, end_time: 861.5
+Word: thing, start_time: 861.5, end_time: 861.7
+Word: I, start_time: 861.7, end_time: 862.1
+Word: could, start_time: 862.1, end_time: 862.3
+Word: say, start_time: 862.3, end_time: 862.5
+Word: about, start_time: 862.5, end_time: 862.7
+Transcript:  the war in Vietnam
+Confidence: 0.7959287762641907
+Word: the, start_time: 864.1, end_time: 864.5
+Word: war, start_time: 864.5, end_time: 864.7
+Word: in, start_time: 864.7, end_time: 864.8
+Word: Vietnam, start_time: 864.8, end_time: 865.6
+Transcript:  in Vietnam
+Confidence: 0.6819190979003906
+Word: in, start_time: 868.9, end_time: 869.4
+Word: Vietnam, start_time: 869.4, end_time: 869.7
+Transcript:  you're okay that's all I have to say about that
+Confidence: 0.828893780708313
+Word: you're, start_time: 872.4, end_time: 872.8
+Word: okay, start_time: 872.8, end_time: 872.9
+Word: that's, start_time: 873.0, end_time: 903.0
+Word: all, start_time: 903.0, end_time: 903.1
+Word: I, start_time: 903.1, end_time: 903.3
+Word: have, start_time: 903.3, end_time: 903.5
+Word: to, start_time: 903.5, end_time: 903.6
+Word: say, start_time: 903.6, end_time: 903.7
+Word: about, start_time: 903.7, end_time: 904.5
+Word: that, start_time: 904.5, end_time: 904.8
+Transcript:  that's the right on me and he said it all
+Confidence: 0.7969965934753418
+Word: that's, start_time: 912.1, end_time: 912.7
+Word: the, start_time: 912.7, end_time: 912.8
+Word: right, start_time: 912.8, end_time: 912.9
+Word: on, start_time: 912.9, end_time: 913.1
+Word: me, start_time: 913.1, end_time: 913.2
+Word: and, start_time: 913.2, end_time: 913.4
+Word: he, start_time: 913.4, end_time: 914.3
+Word: said, start_time: 914.3, end_time: 914.5
+Word: it, start_time: 914.5, end_time: 914.6
+Word: all, start_time: 914.6, end_time: 914.6
+Transcript:  what's your name man
+Confidence: 0.8118047118186951
+Word: what's, start_time: 916.7, end_time: 917.2
+Word: your, start_time: 917.2, end_time: 917.2
+Word: name, start_time: 917.2, end_time: 917.4
+Word: man, start_time: 917.4, end_time: 917.6
+Transcript:  my name's Forrest Forrest Gump
+Confidence: 0.7534685134887695
+Word: my, start_time: 919.0, end_time: 919.4
+Word: name's, start_time: 919.4, end_time: 919.9
+Word: Forrest, start_time: 919.9, end_time: 920.3
+Word: Forrest, start_time: 920.3, end_time: 920.7
+Word: Gump, start_time: 920.7, end_time: 921.3
+Transcript:  Forrest Gump
+Confidence: 0.7522729635238647
+Word: Forrest, start_time: 922.5, end_time: 923.2
+Word: Gump, start_time: 923.2, end_time: 923.2
+Transcript:  it was the happiest moment of my life
+Confidence: 0.8653184175491333
+Word: it, start_time: 930.3, end_time: 963.2
+Word: was, start_time: 963.2, end_time: 963.5
+Word: the, start_time: 963.5, end_time: 963.7
+Word: happiest, start_time: 963.7, end_time: 964.3
+Word: moment, start_time: 964.3, end_time: 964.4
+Word: of, start_time: 964.4, end_time: 964.9
+Word: my, start_time: 964.9, end_time: 965.1
+Word: life, start_time: 965.1, end_time: 965.3
+Transcript:  Jenny and me was just like peas and carrots again she showed me around and even introduced me to some of her new friend
+Confidence: 0.873336136341095
+Word: Jenny, start_time: 967.3, end_time: 968.5
+Word: and, start_time: 968.5, end_time: 968.6
+Word: me, start_time: 968.6, end_time: 968.8
+Word: was, start_time: 968.8, end_time: 969.2
+Word: just, start_time: 969.2, end_time: 969.3
+Word: like, start_time: 969.3, end_time: 969.5
+Word: peas, start_time: 969.5, end_time: 970.0
+Word: and, start_time: 970.0, end_time: 970.1
+Word: carrots, start_time: 970.1, end_time: 970.8
+Word: again, start_time: 970.8, end_time: 970.9
+Word: she, start_time: 971.4, end_time: 972.9
+Word: showed, start_time: 972.9, end_time: 973.2
+Word: me, start_time: 973.2, end_time: 973.3
+Word: around, start_time: 973.3, end_time: 973.5
+Word: and, start_time: 973.5, end_time: 974.5
+Word: even, start_time: 974.5, end_time: 974.7
+Word: introduced, start_time: 974.7, end_time: 975.2
+Word: me, start_time: 975.2, end_time: 975.4
+Word: to, start_time: 975.4, end_time: 975.4
+Word: some, start_time: 975.4, end_time: 975.6
+Word: of, start_time: 975.6, end_time: 975.7
+Word: her, start_time: 975.7, end_time: 975.8
+Word: new, start_time: 975.8, end_time: 976.0
+Word: friend, start_time: 976.0, end_time: 976.3

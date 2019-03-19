@@ -31,10 +31,19 @@ Decoding auditory representation of the brain using natural speech stimuli
 4. [STT](https://github.com/GoogleCloudPlatform/python-docs-samples/tree/master/speech/cloud-client)
 
 ## Dependencies
-- Python3.7, docker
+- Python3.7
 - nibabel, nilearn, ninype
 - textblob, spacy
 - [fmriprep](https://github.com/poldracklab/fmriprep)
 - [FSL](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL)
-- [Slicer](https://download.slicer.org)
 - [DA tagger](https://github.com/ColingPaper2018/DialogueAct-Tagger)
+
+## Usage
+To train DA tagger
+    python DialogueAct-Tagger/scripts/train.py
+To transcribe the audio file
+    python src/transcribe.py <path_to_the_audio_file>
+To extract features, load the brain data and fit the encoding models
+    python src/main.py 
+
+

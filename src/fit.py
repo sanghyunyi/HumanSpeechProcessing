@@ -7,9 +7,18 @@ import pandas as pd
 import numpy as np
 import nibabel as nib
 
-ALPHAS = [1e-3, 1e-2, 1e-1, 1e0, 1e1, 1e2, 1e3]
+
+ALPHAS = [1e-3, 1e-2, 1e-1, 1e0, 1e1, 1e2, 1e3] # Considered hyper parameters
 
 def flatten_brain(images):
+    '''
+    Make the 3d x volumes brain image array be the 1d x volumes array.
+    Input
+    - images: 3d x volumes numpy array
+    Output
+    - out: 1d x volumes numpy array
+    - original_shape: the shape of the input
+    '''
     original_shape = images.shape
     out = []
     for volume_idx in range(images.shape[-1]):
@@ -20,6 +29,15 @@ def flatten_brain(images):
     return out, original_shape
 
 def flat_to_3ds(images, original_shape):
+    '''
+    Make the 1d x volumes array be the 3d x volumes brain image array.
+    This is the inverse function of flattern_brain
+    Input
+    - images: 1d x volumes numpy array
+    - original_shape: the original shape of the images before being applied to flatten_brain
+    Output
+    - out: 3d x volumes numpy array
+    '''
     out = []
     for volume_idx in range(images.shape[-1]):
         one_volume = images[:, volume_idx]
@@ -29,10 +47,28 @@ def flat_to_3ds(images, original_shape):
     return out
 
 def flat_to_3d(images, original_shape):
+    '''
+    Make the 1d array be the 3d brain image array.
+    Input
+    - images: 1d numpy array
+    - original_shape: the original shape of the images before being applied to flatten_brain
+    Output
+    - out: 3d numpy array
+    '''
     images = images.reshape(original_shape[:-1])
     return images
 
-def cross_validation(reg, X, y, n_splits): #reg
+def cross_validation(reg, X, y, n_splits):
+    '''
+    Do n-fold cross validation with a regression algorithm.
+    Input
+    - reg: A regression algorithm from sklean
+    - X: the input to the model
+    - y: the output of the model
+    - n_splits: the number of folds
+    Output
+    - corr_from_CV: correlation score from the cross validation
+    '''
     kf = KFold(n_splits=n_splits, shuffle=False)
     corr_from_CV = []
     for train_idx, test_idx in kf.split(X):
@@ -51,6 +87,17 @@ def cross_validation(reg, X, y, n_splits): #reg
 
 
 def encoding(reg, features, images):
+    '''
+    Run encoding models voxel by voxel with features and brain images.
+    10-folds cross validation is used and the hypermarameter is tuned
+    based on the cross validation result.
+    Input
+    - reg: A regression algorithm from sklearn
+    - features: the feature array from feature.py module
+    - images: the brain image array from brain.py module
+    Output
+    - corr_3d: 3d array that contains correlation scores of each voxel
+    '''
     X = features
     y, image_shape = flatten_brain(images)
     corr_from_alpha = []
@@ -62,13 +109,25 @@ def encoding(reg, features, images):
     corr_3d = flat_to_3d(best_corr, image_shape)
     return corr_3d
 
-def decoding(reg, features, images):
+def decoding(clf, features, images):
+    '''
+    Run a decoding model with features and brain images.
+    10-folds cross validation is used and the hyperparameter is tuned
+    based on the cross validation result.
+    The implementation now, is running on a whole brain.
+    Input
+    - clf: A classificaion algorithm from sklearn
+    - features: the feature array from feature.py module
+    - images: the barin image array from barin.py module
+    Output
+    - best_score: the best accuracy score from the hyperparameter tuning using the cross validation.
+    '''
     X, image_shape = flatten_brain(images)
     y = features
     score_from_alpha = []
     for alpha in ALPHAS:
         reg.C = 1./alpha
-        scores = cross_val_score(reg, X, y, cv=10, scoring='accuracy')
+        scores = cross_val_score(clf, X, y, cv=10, scoring='accuracy')
         score = np.mean(scores)
         score_from_alpha.append(score)
     best_score = np.amax(score_from_alpha)

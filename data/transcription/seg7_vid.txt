@@ -1,0 +1,630 @@
+Waiting for operation to complete...
+Transcript: fourth
+Confidence: 0.6664137840270996
+Word: fourth, start_time: 13.0, end_time: 13.8
+Transcript:  I'm sick
+Confidence: 0.7774975895881653
+Word: I'm, start_time: 16.2, end_time: 16.6
+Word: sick, start_time: 16.6, end_time: 17.1
+Transcript:  what do you have a cough due to cold
+Confidence: 0.8916332125663757
+Word: what, start_time: 20.4, end_time: 20.8
+Word: do, start_time: 20.8, end_time: 20.9
+Word: you, start_time: 20.9, end_time: 21.0
+Word: have, start_time: 21.0, end_time: 21.1
+Word: a, start_time: 21.1, end_time: 21.2
+Word: cough, start_time: 21.2, end_time: 21.4
+Word: due, start_time: 21.4, end_time: 21.6
+Word: to, start_time: 21.6, end_time: 21.6
+Word: cold, start_time: 21.6, end_time: 22.0
+Transcript:  I have some kind of virus and the doctors don't I don't know what it is and there isn't anything they can do about it
+Confidence: 0.8222582936286926
+Word: I, start_time: 23.8, end_time: 24.1
+Word: have, start_time: 24.1, end_time: 24.3
+Word: some, start_time: 24.3, end_time: 24.6
+Word: kind, start_time: 24.6, end_time: 24.7
+Word: of, start_time: 24.7, end_time: 24.9
+Word: virus, start_time: 24.9, end_time: 25.5
+Word: and, start_time: 25.5, end_time: 26.6
+Word: the, start_time: 26.6, end_time: 26.9
+Word: doctors, start_time: 26.9, end_time: 27.4
+Word: don't, start_time: 27.4, end_time: 27.6
+Word: I, start_time: 27.6, end_time: 28.3
+Word: don't, start_time: 28.3, end_time: 28.4
+Word: know, start_time: 28.4, end_time: 28.5
+Word: what, start_time: 28.5, end_time: 28.7
+Word: it, start_time: 28.7, end_time: 28.8
+Word: is, start_time: 28.8, end_time: 28.9
+Word: and, start_time: 28.9, end_time: 29.2
+Word: there, start_time: 29.2, end_time: 29.4
+Word: isn't, start_time: 29.4, end_time: 29.5
+Word: anything, start_time: 29.5, end_time: 29.8
+Word: they, start_time: 29.8, end_time: 30.0
+Word: can, start_time: 30.0, end_time: 30.2
+Word: do, start_time: 30.2, end_time: 30.2
+Word: about, start_time: 30.2, end_time: 30.5
+Word: it, start_time: 30.5, end_time: 30.7
+Transcript:  you could come home with me
+Confidence: 0.7884913682937622
+Word: you, start_time: 36.0, end_time: 36.4
+Word: could, start_time: 36.4, end_time: 36.6
+Word: come, start_time: 36.6, end_time: 36.8
+Word: home, start_time: 36.8, end_time: 37.0
+Word: with, start_time: 37.0, end_time: 37.3
+Word: me, start_time: 37.3, end_time: 37.5
+Transcript:  Jenny you and little Forest come stay at my house and green bow
+Confidence: 0.879486083984375
+Word: Jenny, start_time: 39.8, end_time: 40.4
+Word: you, start_time: 40.4, end_time: 40.5
+Word: and, start_time: 40.5, end_time: 40.7
+Word: little, start_time: 40.7, end_time: 42.0
+Word: Forest, start_time: 42.0, end_time: 42.6
+Word: come, start_time: 42.6, end_time: 43.1
+Word: stay, start_time: 43.1, end_time: 43.5
+Word: at, start_time: 43.5, end_time: 44.2
+Word: my, start_time: 44.2, end_time: 44.3
+Word: house, start_time: 44.3, end_time: 44.8
+Word: and, start_time: 44.8, end_time: 44.9
+Word: green, start_time: 44.9, end_time: 45.2
+Word: bow, start_time: 45.2, end_time: 45.3
+Transcript:  I'll take care of you if you're sick
+Confidence: 0.8256245851516724
+Word: I'll, start_time: 49.5, end_time: 49.8
+Word: take, start_time: 49.8, end_time: 50.1
+Word: care, start_time: 50.1, end_time: 50.3
+Word: of, start_time: 50.3, end_time: 50.4
+Word: you, start_time: 50.4, end_time: 50.7
+Word: if, start_time: 50.7, end_time: 50.9
+Word: you're, start_time: 50.9, end_time: 51.0
+Word: sick, start_time: 51.0, end_time: 51.4
+Transcript:  would you marry me
+Confidence: 0.7512727379798889
+Word: would, start_time: 54.4, end_time: 54.7
+Word: you, start_time: 54.7, end_time: 54.8
+Word: marry, start_time: 54.8, end_time: 55.0
+Word: me, start_time: 55.0, end_time: 55.2
+Transcript:  okay it's time to start
+Confidence: 0.7857306599617004
+Word: okay, start_time: 61.8, end_time: 62.4
+Word: it's, start_time: 62.4, end_time: 70.9
+Word: time, start_time: 70.9, end_time: 71.0
+Word: to, start_time: 71.0, end_time: 71.1
+Word: start, start_time: 71.1, end_time: 71.4
+Transcript:  hi
+Confidence: 0.7509996294975281
+Word: hi, start_time: 90.0, end_time: 90.4
+Transcript:  Lieutenant Dan
+Confidence: 0.659653902053833
+Word: Lieutenant, start_time: 104.8, end_time: 106.7
+Word: Dan, start_time: 106.7, end_time: 106.8
+Transcript:  Lieutenant time
+Confidence: 0.6767703890800476
+Word: Lieutenant, start_time: 122.0, end_time: 122.8
+Word: time, start_time: 122.8, end_time: 122.9
+Transcript:  hello Forest
+Confidence: 0.6484983563423157
+Word: hello, start_time: 124.7, end_time: 125.2
+Word: Forest, start_time: 125.2, end_time: 125.8
+Transcript:  you got new legs new legs yeah I got new legs custom-made titanium alloy it's what they use on the space shuttle
+Confidence: 0.8870450258255005
+Word: you, start_time: 126.9, end_time: 127.2
+Word: got, start_time: 127.2, end_time: 127.4
+Word: new, start_time: 127.4, end_time: 127.5
+Word: legs, start_time: 127.5, end_time: 127.9
+Word: new, start_time: 127.9, end_time: 129.2
+Word: legs, start_time: 129.2, end_time: 129.8
+Word: yeah, start_time: 129.9, end_time: 131.1
+Word: I, start_time: 131.1, end_time: 131.7
+Word: got, start_time: 131.7, end_time: 132.0
+Word: new, start_time: 132.0, end_time: 132.2
+Word: legs, start_time: 132.2, end_time: 132.4
+Word: custom-made, start_time: 132.4, end_time: 134.2
+Word: titanium, start_time: 134.2, end_time: 135.9
+Word: alloy, start_time: 135.9, end_time: 136.2
+Word: it's, start_time: 136.5, end_time: 137.3
+Word: what, start_time: 137.3, end_time: 137.5
+Word: they, start_time: 137.5, end_time: 137.6
+Word: use, start_time: 137.6, end_time: 137.7
+Word: on, start_time: 137.7, end_time: 138.0
+Word: the, start_time: 138.0, end_time: 138.1
+Word: space, start_time: 138.1, end_time: 138.2
+Word: shuttle, start_time: 138.2, end_time: 138.5
+Transcript:  magic likes
+Confidence: 0.5445048809051514
+Word: magic, start_time: 142.6, end_time: 143.3
+Word: likes, start_time: 143.3, end_time: 144.0
+Transcript:  this
+Confidence: 0.6949634552001953
+Word: this, start_time: 145.9, end_time: 146.4
+Transcript:  is my fiance Susan
+Confidence: 0.7915303111076355
+Word: is, start_time: 147.8, end_time: 148.3
+Word: my, start_time: 148.3, end_time: 148.5
+Word: fiance, start_time: 148.5, end_time: 149.1
+Word: Susan, start_time: 149.4, end_time: 150.2
+Transcript:  Lieutenant dying
+Confidence: 0.7094681859016418
+Word: Lieutenant, start_time: 152.6, end_time: 153.6
+Word: dying, start_time: 153.6, end_time: 154.1
+Transcript:  today this is my Jenny
+Confidence: 0.7085713744163513
+Word: today, start_time: 157.9, end_time: 158.8
+Word: this, start_time: 158.8, end_time: 160.1
+Word: is, start_time: 160.1, end_time: 160.3
+Word: my, start_time: 160.3, end_time: 160.5
+Word: Jenny, start_time: 160.5, end_time: 161.0
+Transcript:  to meet you finally
+Confidence: 0.8006622791290283
+Word: to, start_time: 163.1, end_time: 163.4
+Word: meet, start_time: 163.4, end_time: 163.6
+Word: you, start_time: 163.6, end_time: 163.7
+Word: finally, start_time: 163.7, end_time: 163.9
+Transcript:  do you fart
+Confidence: 0.8644276857376099
+Word: do, start_time: 174.1, end_time: 174.6
+Word: you, start_time: 174.6, end_time: 174.8
+Word: fart, start_time: 174.8, end_time: 175.6
+Transcript:  hey hi
+Confidence: 0.6096271872520447
+Word: hey, start_time: 218.1, end_time: 218.6
+Word: hi, start_time: 218.6, end_time: 219.9
+Transcript:  hey Forrest
+Confidence: 0.7199205160140991
+Word: hey, start_time: 232.9, end_time: 233.3
+Word: Forrest, start_time: 233.3, end_time: 233.8
+Transcript:  you scared of Vietnam
+Confidence: 0.803429901599884
+Word: you, start_time: 239.8, end_time: 240.2
+Word: scared, start_time: 240.2, end_time: 240.7
+Word: of, start_time: 240.7, end_time: 240.7
+Word: Vietnam, start_time: 240.7, end_time: 241.3
+Transcript:  yes
+Confidence: 0.7967091202735901
+Word: yes, start_time: 243.0, end_time: 243.8
+Transcript:  what I don't know sometimes it would stop raining long enough for the stars to come out
+Confidence: 0.8292937874794006
+Word: what, start_time: 244.8, end_time: 245.2
+Word: I, start_time: 245.2, end_time: 245.5
+Word: don't, start_time: 245.5, end_time: 247.1
+Word: know, start_time: 247.1, end_time: 247.2
+Word: sometimes, start_time: 247.2, end_time: 249.6
+Word: it, start_time: 249.6, end_time: 250.0
+Word: would, start_time: 250.0, end_time: 250.2
+Word: stop, start_time: 250.2, end_time: 250.5
+Word: raining, start_time: 250.5, end_time: 250.6
+Word: long, start_time: 250.6, end_time: 251.2
+Word: enough, start_time: 251.2, end_time: 251.6
+Word: for, start_time: 251.6, end_time: 251.7
+Word: the, start_time: 251.7, end_time: 252.0
+Word: stars, start_time: 252.0, end_time: 253.0
+Word: to, start_time: 253.0, end_time: 253.1
+Word: come, start_time: 253.1, end_time: 253.2
+Word: out, start_time: 253.2, end_time: 253.7
+Transcript:  it was nice
+Confidence: 0.7023924589157104
+Word: it, start_time: 256.8, end_time: 257.3
+Word: was, start_time: 257.3, end_time: 257.5
+Word: nice, start_time: 257.5, end_time: 257.9
+Transcript:  it was like just before the sun goes to bed down on the Bayou
+Confidence: 0.8716496229171753
+Word: it, start_time: 262.0, end_time: 262.3
+Word: was, start_time: 262.3, end_time: 262.5
+Word: like, start_time: 262.5, end_time: 262.7
+Word: just, start_time: 262.7, end_time: 263.2
+Word: before, start_time: 263.2, end_time: 263.5
+Word: the, start_time: 263.5, end_time: 263.7
+Word: sun, start_time: 263.7, end_time: 264.0
+Word: goes, start_time: 264.0, end_time: 264.3
+Word: to, start_time: 264.3, end_time: 264.4
+Word: bed, start_time: 264.4, end_time: 264.8
+Word: down, start_time: 264.8, end_time: 265.0
+Word: on, start_time: 265.0, end_time: 265.2
+Word: the, start_time: 265.2, end_time: 265.3
+Word: Bayou, start_time: 265.3, end_time: 265.7
+Transcript:  those old million sparkles on the wall
+Confidence: 0.8304697275161743
+Word: those, start_time: 266.7, end_time: 267.5
+Word: old, start_time: 267.5, end_time: 267.7
+Word: million, start_time: 267.7, end_time: 269.1
+Word: sparkles, start_time: 269.1, end_time: 269.7
+Word: on, start_time: 269.7, end_time: 269.8
+Word: the, start_time: 269.8, end_time: 269.9
+Word: wall, start_time: 269.9, end_time: 270.2
+Transcript:  like that mountain like it was so clear Jenny it looked like it would to Skies one on top of the other
+Confidence: 0.8884342312812805
+Word: like, start_time: 272.3, end_time: 272.8
+Word: that, start_time: 272.8, end_time: 273.0
+Word: mountain, start_time: 273.0, end_time: 273.4
+Word: like, start_time: 273.4, end_time: 273.8
+Word: it, start_time: 273.8, end_time: 275.0
+Word: was, start_time: 275.0, end_time: 275.2
+Word: so, start_time: 275.2, end_time: 275.4
+Word: clear, start_time: 275.4, end_time: 276.0
+Word: Jenny, start_time: 276.1, end_time: 276.5
+Word: it, start_time: 276.5, end_time: 276.6
+Word: looked, start_time: 276.6, end_time: 276.9
+Word: like, start_time: 276.9, end_time: 277.0
+Word: it, start_time: 277.0, end_time: 277.1
+Word: would, start_time: 277.1, end_time: 277.3
+Word: to, start_time: 277.3, end_time: 278.4
+Word: Skies, start_time: 278.4, end_time: 279.1
+Word: one, start_time: 279.1, end_time: 279.4
+Word: on, start_time: 279.4, end_time: 279.6
+Word: top, start_time: 279.6, end_time: 280.1
+Word: of, start_time: 280.1, end_time: 280.3
+Word: the, start_time: 280.3, end_time: 280.4
+Word: other, start_time: 280.4, end_time: 280.8
+Transcript:  and then the desert when the sun comes up
+Confidence: 0.8524351119995117
+Word: and, start_time: 283.1, end_time: 283.5
+Word: then, start_time: 283.5, end_time: 283.8
+Word: the, start_time: 283.8, end_time: 283.8
+Word: desert, start_time: 283.8, end_time: 284.4
+Word: when, start_time: 284.4, end_time: 284.7
+Word: the, start_time: 284.7, end_time: 284.8
+Word: sun, start_time: 284.8, end_time: 285.0
+Word: comes, start_time: 285.0, end_time: 285.1
+Word: up, start_time: 285.1, end_time: 285.4
+Transcript:  I couldn't tell where Heaven stopped and the Earth began
+Confidence: 0.8858168125152588
+Word: I, start_time: 288.4, end_time: 288.8
+Word: couldn't, start_time: 288.8, end_time: 289.3
+Word: tell, start_time: 289.3, end_time: 289.5
+Word: where, start_time: 289.5, end_time: 290.4
+Word: Heaven, start_time: 290.4, end_time: 291.8
+Word: stopped, start_time: 291.8, end_time: 292.6
+Word: and, start_time: 292.6, end_time: 292.8
+Word: the, start_time: 292.8, end_time: 293.5
+Word: Earth, start_time: 293.5, end_time: 293.8
+Word: began, start_time: 293.8, end_time: 294.9
+Transcript:  so beautiful
+Confidence: 0.7637638449668884
+Word: so, start_time: 296.5, end_time: 297.1
+Word: beautiful, start_time: 297.1, end_time: 297.3
+Transcript:  I wish I could have been there with you
+Confidence: 0.8637926578521729
+Word: I, start_time: 302.7, end_time: 303.1
+Word: wish, start_time: 303.1, end_time: 303.4
+Word: I, start_time: 303.4, end_time: 303.4
+Word: could, start_time: 303.4, end_time: 303.6
+Word: have, start_time: 303.6, end_time: 303.7
+Word: been, start_time: 303.7, end_time: 303.8
+Word: there, start_time: 303.8, end_time: 304.0
+Word: with, start_time: 304.0, end_time: 304.2
+Word: you, start_time: 304.2, end_time: 304.4
+Transcript:  it were
+Confidence: 0.7321439385414124
+Word: it, start_time: 308.7, end_time: 309.1
+Word: were, start_time: 309.1, end_time: 309.4
+Transcript:  I love you
+Confidence: 0.784275233745575
+Word: I, start_time: 319.6, end_time: 320.7
+Word: love, start_time: 320.7, end_time: 320.9
+Word: you, start_time: 320.9, end_time: 321.1
+Transcript:  you died on a Saturday morning
+Confidence: 0.7948026657104492
+Word: you, start_time: 325.9, end_time: 326.3
+Word: died, start_time: 326.3, end_time: 326.6
+Word: on, start_time: 326.6, end_time: 326.9
+Word: a, start_time: 326.9, end_time: 327.2
+Word: Saturday, start_time: 327.2, end_time: 327.7
+Word: morning, start_time: 327.7, end_time: 327.9
+Transcript:  and you placed here under our tree
+Confidence: 0.789159893989563
+Word: and, start_time: 330.8, end_time: 331.5
+Word: you, start_time: 331.5, end_time: 331.7
+Word: placed, start_time: 331.7, end_time: 332.3
+Word: here, start_time: 332.3, end_time: 333.5
+Word: under, start_time: 333.5, end_time: 333.9
+Word: our, start_time: 333.9, end_time: 334.0
+Word: tree, start_time: 334.0, end_time: 334.3
+Transcript:  and I had that house so your father bulldozed to the ground
+Confidence: 0.835696816444397
+Word: and, start_time: 339.0, end_time: 339.5
+Word: I, start_time: 339.5, end_time: 339.7
+Word: had, start_time: 339.7, end_time: 339.9
+Word: that, start_time: 339.9, end_time: 340.1
+Word: house, start_time: 340.1, end_time: 341.4
+Word: so, start_time: 341.4, end_time: 341.6
+Word: your, start_time: 341.6, end_time: 341.7
+Word: father, start_time: 341.7, end_time: 342.2
+Word: bulldozed, start_time: 342.2, end_time: 343.2
+Word: to, start_time: 343.2, end_time: 343.2
+Word: the, start_time: 343.2, end_time: 343.3
+Word: ground, start_time: 343.3, end_time: 343.4
+Transcript:  mama
+Confidence: 0.6371005177497864
+Word: mama, start_time: 347.5, end_time: 348.1
+Transcript:  always said dying is a part of life
+Confidence: 0.724079966545105
+Word: always, start_time: 350.3, end_time: 351.0
+Word: said, start_time: 351.0, end_time: 351.5
+Word: dying, start_time: 351.5, end_time: 353.3
+Word: is, start_time: 353.3, end_time: 354.2
+Word: a, start_time: 354.2, end_time: 354.3
+Word: part, start_time: 354.3, end_time: 354.4
+Word: of, start_time: 354.4, end_time: 354.6
+Word: life, start_time: 354.6, end_time: 354.8
+Transcript:  I sure wish it was
+Confidence: 0.879993736743927
+Word: I, start_time: 358.2, end_time: 358.6
+Word: sure, start_time: 358.6, end_time: 358.8
+Word: wish, start_time: 358.8, end_time: 359.0
+Word: it, start_time: 359.0, end_time: 359.2
+Word: was, start_time: 359.2, end_time: 359.5
+Transcript:  live forth
+Confidence: 0.6481022834777832
+Word: live, start_time: 363.0, end_time: 363.5
+Word: forth, start_time: 363.5, end_time: 363.9
+Transcript:  doing just fine but about to start school again soon I might kids breakfast lunch and dinner every day
+Confidence: 0.8432183265686035
+Word: doing, start_time: 365.7, end_time: 366.3
+Word: just, start_time: 366.3, end_time: 366.4
+Word: fine, start_time: 366.4, end_time: 366.9
+Word: but, start_time: 366.9, end_time: 368.4
+Word: about, start_time: 368.4, end_time: 369.8
+Word: to, start_time: 369.8, end_time: 370.0
+Word: start, start_time: 370.0, end_time: 370.3
+Word: school, start_time: 370.3, end_time: 370.5
+Word: again, start_time: 370.5, end_time: 370.9
+Word: soon, start_time: 370.9, end_time: 371.7
+Word: I, start_time: 371.7, end_time: 373.8
+Word: might, start_time: 373.8, end_time: 374.0
+Word: kids, start_time: 374.0, end_time: 374.6
+Word: breakfast, start_time: 374.6, end_time: 375.3
+Word: lunch, start_time: 375.3, end_time: 376.0
+Word: and, start_time: 376.0, end_time: 376.2
+Word: dinner, start_time: 376.2, end_time: 376.3
+Word: every, start_time: 376.3, end_time: 376.9
+Word: day, start_time: 376.9, end_time: 377.2
+Transcript:  I'll make sure
+Confidence: 0.7860108613967896
+Word: I'll, start_time: 379.4, end_time: 379.8
+Word: make, start_time: 379.8, end_time: 380.1
+Word: sure, start_time: 380.1, end_time: 380.3
+Transcript:  Combs his hair brushes his teeth every day
+Confidence: 0.8190752863883972
+Word: Combs, start_time: 382.1, end_time: 382.7
+Word: his, start_time: 382.7, end_time: 382.8
+Word: hair, start_time: 382.8, end_time: 382.9
+Word: brushes, start_time: 382.9, end_time: 384.2
+Word: his, start_time: 384.2, end_time: 384.4
+Word: teeth, start_time: 384.4, end_time: 384.5
+Word: every, start_time: 384.5, end_time: 385.0
+Word: day, start_time: 385.0, end_time: 385.0
+Transcript:  teach him how to play ping pong
+Confidence: 0.7709578275680542
+Word: teach, start_time: 388.1, end_time: 388.6
+Word: him, start_time: 388.6, end_time: 388.7
+Word: how, start_time: 388.7, end_time: 388.9
+Word: to, start_time: 388.9, end_time: 389.0
+Word: play, start_time: 389.0, end_time: 389.0
+Word: ping, start_time: 389.0, end_time: 389.5
+Word: pong, start_time: 389.5, end_time: 389.6
+Transcript:  he's really good
+Confidence: 0.7957757711410522
+Word: he's, start_time: 391.0, end_time: 393.5
+Word: really, start_time: 393.5, end_time: 393.7
+Word: good, start_time: 393.7, end_time: 394.2
+Transcript:  we fish a lot
+Confidence: 0.8477585911750793
+Word: we, start_time: 400.4, end_time: 400.8
+Word: fish, start_time: 400.8, end_time: 401.0
+Word: a, start_time: 401.0, end_time: 401.2
+Word: lot, start_time: 401.2, end_time: 401.3
+Transcript:  every night we read a book if you're so smart jetty
+Confidence: 0.8296177983283997
+Word: every, start_time: 405.4, end_time: 405.9
+Word: night, start_time: 405.9, end_time: 406.2
+Word: we, start_time: 406.2, end_time: 406.3
+Word: read, start_time: 406.3, end_time: 406.5
+Word: a, start_time: 406.5, end_time: 406.5
+Word: book, start_time: 406.5, end_time: 406.6
+Word: if, start_time: 406.6, end_time: 407.0
+Word: you're, start_time: 407.0, end_time: 407.1
+Word: so, start_time: 407.1, end_time: 407.3
+Word: smart, start_time: 407.3, end_time: 407.6
+Word: jetty, start_time: 407.6, end_time: 408.3
+Transcript:  you'd be so proud of you
+Confidence: 0.8473210334777832
+Word: you'd, start_time: 411.7, end_time: 412.2
+Word: be, start_time: 412.2, end_time: 412.3
+Word: so, start_time: 412.3, end_time: 412.5
+Word: proud, start_time: 412.5, end_time: 412.6
+Word: of, start_time: 412.6, end_time: 413.0
+Word: you, start_time: 413.0, end_time: 413.1
+Transcript:  here wrote you a letter
+Confidence: 0.8144384622573853
+Word: here, start_time: 417.8, end_time: 418.7
+Word: wrote, start_time: 418.7, end_time: 419.1
+Word: you, start_time: 419.1, end_time: 419.3
+Word: a, start_time: 419.3, end_time: 419.4
+Word: letter, start_time: 419.4, end_time: 420.4
+Transcript:  this is I can't read it that's about the stuff so I just leave it here for you
+Confidence: 0.8564366102218628
+Word: this, start_time: 422.1, end_time: 423.0
+Word: is, start_time: 423.0, end_time: 423.1
+Word: I, start_time: 423.1, end_time: 423.2
+Word: can't, start_time: 423.2, end_time: 423.6
+Word: read, start_time: 423.6, end_time: 423.9
+Word: it, start_time: 423.9, end_time: 424.0
+Word: that's, start_time: 424.4, end_time: 425.2
+Word: about, start_time: 425.2, end_time: 425.3
+Word: the, start_time: 425.3, end_time: 425.4
+Word: stuff, start_time: 425.4, end_time: 425.7
+Word: so, start_time: 425.7, end_time: 425.8
+Word: I, start_time: 425.8, end_time: 425.9
+Word: just, start_time: 425.9, end_time: 426.0
+Word: leave, start_time: 426.0, end_time: 426.7
+Word: it, start_time: 426.7, end_time: 426.9
+Word: here, start_time: 426.9, end_time: 427.1
+Word: for, start_time: 427.1, end_time: 427.2
+Word: you, start_time: 427.2, end_time: 427.4
+Transcript:  yeah
+Confidence: 0.6302871108055115
+Word: yeah, start_time: 443.3, end_time: 443.8
+Transcript:  I don't know mama with a ride or it's Lieutenant down I don't know if we each have a
+Confidence: 0.8531705737113953
+Word: I, start_time: 448.4, end_time: 450.5
+Word: don't, start_time: 450.5, end_time: 451.0
+Word: know, start_time: 451.0, end_time: 451.1
+Word: mama, start_time: 451.1, end_time: 452.2
+Word: with, start_time: 452.2, end_time: 452.6
+Word: a, start_time: 452.6, end_time: 452.7
+Word: ride, start_time: 452.7, end_time: 453.1
+Word: or, start_time: 453.1, end_time: 453.4
+Word: it's, start_time: 453.4, end_time: 453.9
+Word: Lieutenant, start_time: 453.9, end_time: 455.5
+Word: down, start_time: 455.5, end_time: 456.2
+Word: I, start_time: 456.2, end_time: 456.3
+Word: don't, start_time: 456.3, end_time: 456.5
+Word: know, start_time: 456.5, end_time: 457.3
+Word: if, start_time: 457.3, end_time: 459.1
+Word: we, start_time: 459.1, end_time: 459.4
+Word: each, start_time: 459.4, end_time: 460.6
+Word: have, start_time: 460.6, end_time: 460.9
+Word: a, start_time: 460.9, end_time: 461.0
+Transcript:  destiny
+Confidence: 0.7325175404548645
+Word: destiny, start_time: 462.2, end_time: 463.2
+Transcript:  or if we're all just floating around accidental like on a breeze
+Confidence: 0.8749455213546753
+Word: or, start_time: 464.7, end_time: 465.5
+Word: if, start_time: 465.5, end_time: 465.7
+Word: we're, start_time: 465.7, end_time: 467.0
+Word: all, start_time: 467.0, end_time: 467.1
+Word: just, start_time: 467.1, end_time: 467.2
+Word: floating, start_time: 467.2, end_time: 467.6
+Word: around, start_time: 467.6, end_time: 468.0
+Word: accidental, start_time: 468.0, end_time: 468.8
+Word: like, start_time: 468.8, end_time: 469.0
+Word: on, start_time: 469.0, end_time: 469.2
+Word: a, start_time: 469.2, end_time: 469.3
+Word: breeze, start_time: 469.3, end_time: 469.8
+Transcript:  but I think
+Confidence: 0.7090030908584595
+Word: but, start_time: 474.1, end_time: 474.7
+Word: I, start_time: 474.7, end_time: 474.8
+Word: think, start_time: 474.8, end_time: 475.3
+Transcript:  maybe it's both
+Confidence: 0.8079627752304077
+Word: maybe, start_time: 477.8, end_time: 478.4
+Word: it's, start_time: 478.4, end_time: 478.6
+Word: both, start_time: 478.6, end_time: 478.8
+Transcript:  maybe both is happening at the same time
+Confidence: 0.8219553232192993
+Word: maybe, start_time: 483.6, end_time: 484.2
+Word: both, start_time: 484.2, end_time: 484.4
+Word: is, start_time: 484.4, end_time: 484.8
+Word: happening, start_time: 484.8, end_time: 485.4
+Word: at, start_time: 485.4, end_time: 485.6
+Word: the, start_time: 485.6, end_time: 485.7
+Word: same, start_time: 485.7, end_time: 485.7
+Word: time, start_time: 485.7, end_time: 486.1
+Transcript:  I miss you dearly
+Confidence: 0.8021364212036133
+Word: I, start_time: 492.3, end_time: 492.6
+Word: miss, start_time: 492.6, end_time: 492.9
+Word: you, start_time: 492.9, end_time: 493.1
+Word: dearly, start_time: 493.1, end_time: 493.4
+Transcript:  if there's anything you need
+Confidence: 0.8171013593673706
+Word: if, start_time: 500.3, end_time: 500.8
+Word: there's, start_time: 500.8, end_time: 501.0
+Word: anything, start_time: 501.0, end_time: 501.3
+Word: you, start_time: 501.3, end_time: 501.5
+Word: need, start_time: 501.5, end_time: 501.8
+Transcript:  I won't be far away
+Confidence: 0.8312004804611206
+Word: I, start_time: 503.5, end_time: 503.8
+Word: won't, start_time: 503.8, end_time: 504.0
+Word: be, start_time: 504.0, end_time: 504.1
+Word: far, start_time: 504.1, end_time: 504.3
+Word: away, start_time: 504.3, end_time: 504.4
+Transcript:  here's your bus
+Confidence: 0.7124901413917542
+Word: here's, start_time: 538.3, end_time: 538.8
+Word: your, start_time: 538.8, end_time: 539.0
+Word: bus, start_time: 539.0, end_time: 539.5
+Transcript:  okay hey
+Confidence: 0.7916584610939026
+Word: okay, start_time: 540.6, end_time: 541.3
+Word: hey, start_time: 541.7, end_time: 543.2
+Transcript:  I know this answer that for show and tell because for him is to read it to you my favorite book
+Confidence: 0.8626640439033508
+Word: I, start_time: 544.5, end_time: 544.9
+Word: know, start_time: 544.9, end_time: 545.2
+Word: this, start_time: 545.2, end_time: 545.6
+Word: answer, start_time: 545.6, end_time: 546.8
+Word: that, start_time: 546.8, end_time: 547.2
+Word: for, start_time: 547.2, end_time: 547.3
+Word: show, start_time: 547.3, end_time: 547.6
+Word: and, start_time: 547.6, end_time: 547.7
+Word: tell, start_time: 547.7, end_time: 547.9
+Word: because, start_time: 547.9, end_time: 548.1
+Word: for, start_time: 548.1, end_time: 549.4
+Word: him, start_time: 549.4, end_time: 549.5
+Word: is, start_time: 549.5, end_time: 549.7
+Word: to, start_time: 549.7, end_time: 549.9
+Word: read, start_time: 549.9, end_time: 550.3
+Word: it, start_time: 550.3, end_time: 550.4
+Word: to, start_time: 550.4, end_time: 550.6
+Word: you, start_time: 550.6, end_time: 550.6
+Word: my, start_time: 550.6, end_time: 552.1
+Word: favorite, start_time: 552.1, end_time: 552.6
+Word: book, start_time: 552.6, end_time: 553.0
+Transcript:  hey
+Confidence: 0.6788726449012756
+Word: hey, start_time: 558.6, end_time: 558.9
+Transcript:  hi Forrest Gump
+Confidence: 0.6108095049858093
+Word: hi, start_time: 567.7, end_time: 568.2
+Word: Forrest, start_time: 568.2, end_time: 568.7
+Word: Gump, start_time: 568.7, end_time: 569.9
+Transcript:  I want to tell you I love you I love you too Daddy
+Confidence: 0.7961359024047852
+Word: I, start_time: 573.4, end_time: 573.8
+Word: want, start_time: 573.8, end_time: 574.0
+Word: to, start_time: 574.0, end_time: 574.1
+Word: tell, start_time: 574.1, end_time: 574.3
+Word: you, start_time: 574.3, end_time: 574.5
+Word: I, start_time: 574.5, end_time: 574.6
+Word: love, start_time: 574.6, end_time: 574.8
+Word: you, start_time: 574.8, end_time: 575.0
+Word: I, start_time: 575.0, end_time: 576.2
+Word: love, start_time: 576.2, end_time: 576.4
+Word: you, start_time: 576.4, end_time: 576.5
+Word: too, start_time: 576.5, end_time: 576.7
+Word: Daddy, start_time: 576.7, end_time: 577.1
+Transcript:  I'll be right here when you get back
+Confidence: 0.8502925634384155
+Word: I'll, start_time: 578.9, end_time: 579.3
+Word: be, start_time: 579.3, end_time: 579.4
+Word: right, start_time: 579.4, end_time: 579.6
+Word: here, start_time: 579.6, end_time: 579.7
+Word: when, start_time: 579.7, end_time: 579.8
+Word: you, start_time: 579.8, end_time: 579.9
+Word: get, start_time: 579.9, end_time: 580.1
+Word: back, start_time: 580.1, end_time: 580.2
+Transcript:  you want to stay in this bus to school now don't you of course anymore Dorothy here's nine Forrest Gump
+Confidence: 0.8626255393028259
+Word: you, start_time: 586.0, end_time: 586.4
+Word: want, start_time: 586.4, end_time: 586.6
+Word: to, start_time: 586.6, end_time: 586.7
+Word: stay, start_time: 586.7, end_time: 587.0
+Word: in, start_time: 587.0, end_time: 587.1
+Word: this, start_time: 587.1, end_time: 587.2
+Word: bus, start_time: 587.2, end_time: 587.9
+Word: to, start_time: 587.9, end_time: 588.0
+Word: school, start_time: 588.0, end_time: 588.3
+Word: now, start_time: 588.3, end_time: 588.6
+Word: don't, start_time: 588.6, end_time: 588.9
+Word: you, start_time: 588.9, end_time: 589.0
+Word: of, start_time: 589.0, end_time: 589.4
+Word: course, start_time: 589.4, end_time: 589.7
+Word: anymore, start_time: 589.7, end_time: 590.1
+Word: Dorothy, start_time: 590.1, end_time: 590.5
+Word: here's, start_time: 590.5, end_time: 590.9
+Word: nine, start_time: 590.9, end_time: 591.4
+Word: Forrest, start_time: 591.4, end_time: 591.9
+Word: Gump, start_time: 591.9, end_time: 592.2
